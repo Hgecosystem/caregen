@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareGen Intelligence™ — Health Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   CareGen Intelligence — Landing Page
+   Brand: dominant #612CAD (purple) · secondary #050025 (near-black)
+          accent #F5B533 (amber). Dark canvas, gradient hero moments —
+          matches the Brand Identity Guidelines deck.
+   Built on the HG Ecosystem structural/animation system, re-themed.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --cg-dominant:   #612CAD;
+  --cg-mid:        #220749;
+  --cg-secondary:  #050025;
+  --cg-accent:     #F5B533;
+
+  --page-bg-base:  #050025;
+
+  --bloom-left-color:  #612CAD;
+  --bloom-right-color: #F5B533;
+  --bloom-left-opacity: 0.40;
+  --bloom-right-opacity: 0.30;
+
+  --grain-opacity: 0.05;
+
+  --text-1: rgba(255,255,255,0.94);
+  --text-2: rgba(255,255,255,0.72);
+  --text-3: rgba(255,255,255,0.52);
+
+  --radius-card: 25px;
+  --font: 'Manrope', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--page-bg-base);
+  color: var(--text-1);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ─── Fixed background: edge color blooms (purple / amber) ───────── */
+.page-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.bloom {
+  position: absolute;
+  width: 74vw; height: 130vh; top: -15vh;
+  border-radius: 50%;
+  filter: blur(130px);
+}
+.bloom--left {
+  left: -28vw;
+  background: radial-gradient(ellipse at 35% 35%, var(--bloom-left-color) 0%, transparent 68%);
+  opacity: var(--bloom-left-opacity);
+}
+.bloom--right {
+  right: -28vw;
+  background: radial-gradient(ellipse at 65% 35%, var(--bloom-right-color) 0%, transparent 68%);
+  opacity: var(--bloom-right-opacity);
+}
+
+/* ─── Film grain overlay ──────────────────────────────────────────── */
+.grain-overlay {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+}
+.grain-overlay svg { width: 100%; height: 100%; display: block; }
+
+main { position: relative; z-index: 1; }
+
+/* ═══ NAVBAR — dark frosted glass pill ═══════════════════════════ */
+.nav-outer {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+  z-index: 100; display: inline-flex; align-items: center; gap: 16px;
+  max-width: calc(100vw - 32px);
+}
+.nav-brand { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.nav-brand-icon { width: 26px; height: 26px; display: block; }
+.nav-brand-word { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.nav-brand-sub { font-size: 10px; font-weight: 500; color: var(--text-2); margin-left: 2px; }
+
+.site-nav {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 0 6px 0 22px;
+  height: 50px;
+  display: inline-flex; align-items: center; gap: 2px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  white-space: nowrap;
+}
+.nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+  padding: 5px 10px; border-radius: 999px;
+  transition: color 0.18s, background 0.18s;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-cta {
+  font-size: 13px; font-weight: 700; color: var(--cg-secondary);
+  background: var(--cg-accent); border-radius: 999px; padding: 8px 18px;
+  white-space: nowrap; transition: background 0.18s, transform 0.18s;
+  flex-shrink: 0; margin-left: 6px;
+}
+.nav-cta:hover { background: #ffc75c; transform: translateY(-1px); }
+
+.nav-hamburger {
+  display: none; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px; cursor: pointer;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.35); flex-shrink: 0;
+}
+.nav-hamburger span { display: block; width: 18px; height: 1.5px; background: #fff; border-radius: 2px; position: relative; transition: transform 0.25s ease, opacity 0.25s ease; }
+.nav-hamburger span::before, .nav-hamburger span::after {
+  content: ''; display: block; width: 18px; height: 1.5px; background: #fff; border-radius: 2px;
+  position: absolute; left: 0; transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger span::before { top: -5px; }
+.nav-hamburger span::after  { top: 5px; }
+.nav-hamburger.is-open span { background: transparent; }
+.nav-hamburger.is-open span::before { transform: translateY(5px) rotate(45deg); }
+.nav-hamburger.is-open span::after  { transform: translateY(-5px) rotate(-45deg); }
+
+.nav-drawer {
+  display: none; position: fixed; inset: 0; z-index: 99; padding-top: 90px;
+  flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px;
+  background: rgba(5,0,37,0.96);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  opacity: 0; transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none;
+}
+.nav-drawer.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.nav-drawer a {
+  font-size: 18px; font-weight: 600; color: #fff; padding: 14px 24px;
+  width: 100%; text-align: center; border-radius: 12px; max-width: 320px;
+  transition: background 0.15s;
+}
+.nav-drawer a:hover { background: rgba(255,255,255,0.06); }
+.nav-drawer .nav-drawer-cta { margin-top: 16px; background: var(--cg-accent); color: var(--cg-secondary); border-radius: 999px; }
+
+@media (max-width: 820px) {
+  .nav-outer { gap: 10px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: inline-flex; }
+  .nav-drawer { display: flex; }
+}
+
+/* ═══ HERO ═══════════════════════════════════════════════════════ */
+.hero-wrap { padding: 0; }
+.hero-card {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; padding: 80px 5% 80px;
+}
+
+.hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-bg-parallax {
+  position: absolute; top: 0; left: 0; right: 0; bottom: -25%;
+  will-change: transform; transform: translateZ(0);
+}
+.hero-bg-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  background-image: url('images/CareGen_Brand_Identity_bg.svg');
+  background-size: cover; background-position: center center;
+  animation: hero-breathe 12s ease-in-out infinite alternate;
+  will-change: transform; transform: translateZ(0);
+}
+@keyframes hero-breathe { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(5,0,37,0.62) 0%, rgba(5,0,37,0.28) 45%, rgba(5,0,37,0.10) 100%);
+}
+
+.hero-ring-outer, .hero-ring-inner {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); pointer-events: none; z-index: 1;
+}
+.hero-ring-outer { width: 62vw; height: 62vw; }
+.hero-ring-inner { width: 46vw; height: 46vw; }
+
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  max-width: 620px; margin-top: -20px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-1);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,181,51,0.55);
+  border-radius: 100px; padding: 6px 16px; margin-bottom: 22px;
+  backdrop-filter: blur(8px);
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cg-accent); }
+
+.hero-heading { font-family: var(--font); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 18px; }
+.hero-line-1 {
+  display: block; font-size: clamp(24px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--text-1);
+}
+.hero-line-2 {
+  display: block; font-size: clamp(34px, 4.8vw, 62px); line-height: 1.08; letter-spacing: -0.03em;
+  background: linear-gradient(90deg, var(--cg-accent) 0%, #d98fce 55%, var(--cg-dominant) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.3vw, 17px); font-weight: 400; line-height: 1.65;
+  color: var(--text-2); max-width: 480px; margin-bottom: 34px; text-wrap: pretty;
+}
+
+.hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 56px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 10px;
+  border-radius: 100px; font-family: var(--font); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.22s ease; white-space: nowrap;
+}
+.btn-primary { background: var(--cg-accent); color: var(--cg-secondary); padding: 13px 20px 13px 28px; border: 1.5px solid transparent; }
+.btn-primary:hover { background: #ffc75c; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(245,181,51,0.32); }
+.btn-primary:hover .btn-icon { transform: translateX(4px); }
+.btn-secondary { background: transparent; color: var(--text-2); padding: 0 24px 0 28px; height: 46px; border: 1.5px solid rgba(255,255,255,0.22); }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.42); color: #fff; background: rgba(255,255,255,0.06); }
+.btn-secondary:hover .btn-icon { transform: translateX(3px); }
+.btn-icon { display: inline-flex; align-items: center; transition: transform 0.22s ease; flex-shrink: 0; }
+
+/* ── Hero mark: glowing gradient logomark ── */
+.hero-mark { position: relative; z-index: 2; width: 128px; height: 128px; display: flex; align-items: center; justify-content: center; }
+.hero-mark::before {
+  content: ''; position: absolute; inset: -60%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,181,51,0.35), rgba(97,44,173,0.35) 55%, transparent 72%);
+  filter: blur(24px); animation: mark-pulse 5s ease-in-out infinite alternate;
+}
+@keyframes mark-pulse { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.12); opacity: 1; } }
+.hero-mark-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.hero-mark svg { width: 62px; height: 62px; position: relative; z-index: 1; }
+
+/* ── Entrance animations ── */
+@keyframes hero-fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes hero-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.hero-badge   { opacity: 0; animation: hero-fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s  both; }
+.hero-heading { opacity: 0; animation: hero-fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.45s both; }
+.hero-sub     { opacity: 0; animation: hero-fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s  both; }
+.hero-actions { opacity: 0; animation: hero-fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.95s both; }
+.hero-mark    { opacity: 0; animation: hero-fade-in 1s ease 1.2s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-img, .hero-mark::before { animation: none; }
+  .hero-badge, .hero-heading, .hero-sub, .hero-actions, .hero-mark { opacity: 1; animation: none; }
+}
+
+@media (max-width: 768px) {
+  .hero-ring-outer, .hero-ring-inner { display: none; }
+  .hero-card { padding: 120px 6% 60px; }
+  .hero-content { max-width: 92vw; }
+}
+
+/* ═══ FOOTER (placeholder — full footer arrives with later sections) ═ */
+.site-footer {
+  position: relative; z-index: 1;
+  margin: 0 2.5vw 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-card);
+  padding: 28px 5%;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-note { font-size: 13px; color: var(--text-3); }
+</style>
+</head>
+<body>
+
+<!-- ── Fixed background layer: edge color blooms ─────────────────── -->
+<div class="page-bg" aria-hidden="true">
+  <div class="bloom bloom--left"></div>
+  <div class="bloom bloom--right"></div>
+</div>
+
+<!-- ── Film grain overlay ─────────────────────────────────────────── -->
+<div class="grain-overlay" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain)"/>
+  </svg>
+</div>
+
+<div class="nav-outer">
+  <a href="#" class="nav-brand">
+    <svg class="nav-brand-icon" viewBox="0 0 768 767.999994" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cgLogoGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F5B533"/>
+          <stop offset="100%" stop-color="#612CAD"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#cgLogoGradNav)" d="M 168.359375 384.15625 C 168.359375 320.128906 189.722656 266.726562 227.445312 229.382812 C 265.183594 192.011719 319.203125 170.792969 384.15625 170.792969 C 513.382812 170.792969 599.957031 256.125 599.957031 384.15625 C 599.957031 512.191406 513.382812 597.519531 384.15625 597.519531 C 319.203125 597.519531 265.183594 576.304688 227.445312 538.933594 C 189.722656 501.589844 168.359375 448.1875 168.359375 384.15625 Z M 409.160156 529.050781 C 388.566406 530.460938 366.335938 528.28125 350.441406 521.332031 C 349.929688 521.101562 349.527344 520.722656 349.246094 520.261719 L 349.246094 520.25 C 345.898438 514.539062 341.957031 507.359375 339.300781 497.449219 C 323.84375 439.726562 358.144531 380.3125 415.867188 364.851562 C 466.03125 351.402344 517.484375 375.550781 540.25 420.007812 C 541.382812 422.222656 543.804688 423.464844 546.261719 423.0625 C 548.722656 422.671875 550.644531 420.75 551.035156 418.289062 C 552.738281 407.40625 553.625 396.015625 553.625 384.15625 C 553.625 331.632812 536.5 288.445312 506.859375 258.328125 C 477.183594 228.164062 434.871094 211.039062 384.15625 211.039062 C 333.457031 211.039062 291.144531 228.164062 261.457031 258.328125 C 231.816406 288.445312 214.6875 331.632812 214.6875 384.15625 C 214.6875 436.367188 231.804688 479.566406 261.457031 509.757812 C 291.132812 539.992188 333.457031 557.277344 384.15625 557.277344 C 429.125 557.277344 467.492188 543.679688 496.304688 519.519531 C 496.476562 519.371094 496.644531 519.214844 496.804688 519.042969 C 513.359375 501.355469 520.6875 475.757812 513.957031 450.644531 C 503.597656 411.972656 463.78125 388.992188 425.121094 399.363281 C 386.433594 409.71875 363.453125 449.527344 373.8125 488.199219 C 379.265625 508.550781 392.277344 521.808594 409.160156 529.050781 Z M 409.160156 529.050781"/>
+    </svg>
+    <span class="nav-brand-word">CareGen</span><span class="nav-brand-sub">Intelligence™</span>
+  </a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <ul class="nav-links">
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Discovery Call</a>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu">
+  <a href="#capabilities">Capabilities</a>
+  <a href="#how-it-works">How It Works</a>
+  <a href="#compliance">Compliance</a>
+  <a href="#contact" class="nav-drawer-cta">Book a Discovery Call</a>
+</div>
+
+<main>
+
+  <!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
+  <section class="hero-wrap" aria-label="Hero">
+    <div class="hero-card">
+
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-bg-parallax">
+          <div class="hero-bg-img"></div>
+        </div>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-ring-outer" aria-hidden="true"></div>
+      <div class="hero-ring-inner" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <span class="hero-badge">Powered by Health Generation + Talius</span>
+
+        <h1 class="hero-heading">
+          <span class="hero-line-1">Continuous Care Intelligence.</span>
+          <span class="hero-line-2">Ahead of the Risk.</span>
+        </h1>
+
+        <p class="hero-sub">CareGen pairs Talius sensing and AI with a Health&nbsp;Generation-run clinical service — so falls, deterioration and skin risk are caught early, and every response is captured as Star&nbsp;Rating and Commission-ready evidence.</p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            Book a Discovery Call
+            <span class="btn-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <a href="#how-it-works" class="btn btn-secondary">
+            See How It Works
+            <span class="btn-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="hero-mark" aria-hidden="true">
+          <div class="hero-mark-ring"></div>
+          <svg viewBox="0 0 768 767.999994" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cgLogoGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F5B533"/>
+                <stop offset="100%" stop-color="#ffffff"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#cgLogoGradHero)" d="M 168.359375 384.15625 C 168.359375 320.128906 189.722656 266.726562 227.445312 229.382812 C 265.183594 192.011719 319.203125 170.792969 384.15625 170.792969 C 513.382812 170.792969 599.957031 256.125 599.957031 384.15625 C 599.957031 512.191406 513.382812 597.519531 384.15625 597.519531 C 319.203125 597.519531 265.183594 576.304688 227.445312 538.933594 C 189.722656 501.589844 168.359375 448.1875 168.359375 384.15625 Z M 409.160156 529.050781 C 388.566406 530.460938 366.335938 528.28125 350.441406 521.332031 C 349.929688 521.101562 349.527344 520.722656 349.246094 520.261719 L 349.246094 520.25 C 345.898438 514.539062 341.957031 507.359375 339.300781 497.449219 C 323.84375 439.726562 358.144531 380.3125 415.867188 364.851562 C 466.03125 351.402344 517.484375 375.550781 540.25 420.007812 C 541.382812 422.222656 543.804688 423.464844 546.261719 423.0625 C 548.722656 422.671875 550.644531 420.75 551.035156 418.289062 C 552.738281 407.40625 553.625 396.015625 553.625 384.15625 C 553.625 331.632812 536.5 288.445312 506.859375 258.328125 C 477.183594 228.164062 434.871094 211.039062 384.15625 211.039062 C 333.457031 211.039062 291.144531 228.164062 261.457031 258.328125 C 231.816406 288.445312 214.6875 331.632812 214.6875 384.15625 C 214.6875 436.367188 231.804688 479.566406 261.457031 509.757812 C 291.132812 539.992188 333.457031 557.277344 384.15625 557.277344 C 429.125 557.277344 467.492188 543.679688 496.304688 519.519531 C 496.476562 519.371094 496.644531 519.214844 496.804688 519.042969 C 513.359375 501.355469 520.6875 475.757812 513.957031 450.644531 C 503.597656 411.972656 463.78125 388.992188 425.121094 399.363281 C 386.433594 409.71875 363.453125 449.527344 373.8125 488.199219 C 379.265625 508.550781 392.277344 521.808594 409.160156 529.050781 Z M 409.160156 529.050781"/>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" aria-label="Site footer">
+  <span class="footer-note">CareGen Intelligence™ — more sections coming next.</span>
+  <span class="footer-note">&copy; 2026 Health Generation. All rights reserved.</span>
+</footer>
+
+<!-- Nav hamburger toggle -->
+<script>
+(function () {
+  var btn    = document.querySelector('.nav-hamburger');
+  var drawer = document.getElementById('nav-drawer');
+  if (!btn || !drawer) return;
+
+  function openMenu() {
+    drawer.classList.add('is-open');
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close menu');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    drawer.classList.remove('is-open');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', function () {
+    drawer.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+  drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+})();
+</script>
+
+<!-- Hero parallax scroll -->
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var el = document.querySelector('.hero-bg-parallax');
+  if (!el) return;
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      el.style.transform = 'translateZ(0) translateY(-' + (window.scrollY * 0.4).toFixed(1) + 'px)';
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

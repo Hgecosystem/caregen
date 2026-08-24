@@ -1,0 +1,466 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CareGen - Batch 1 Product Pack</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"><style>:root{--navy:#0d1f3c;--pink:#E56B77;--talius:#4DB6C3;--teal:#1D9E75;--teal-light:#E1F5EE;--teal-mid:#5DCAA5;--teal-dark:#085041;--amber:#EF9F27;--amber-light:#FAEEDA;--amber-dark:#854F0B;--g50:#F8F7F4;--g100:#EEEBE3;--g200:#E0DDD4;--g300:#cdc9be;--g400:#807f78;--g600:#54534f;--g800:#23231f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--g50);color:var(--g800);font-size:14px;line-height:1.5}
+.header{background:var(--navy);padding:0 22px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.hb{display:flex;align-items:center;gap:11px}.logo{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--teal),var(--talius));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px}
+.bn{font-size:14px;font-weight:600;color:#fff}.bn small{display:block;font-size:10px;color:#9fb4d4;font-weight:400}
+.pill{background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:5px 12px;border-radius:99px}
+.tabbar{background:#fff;border-bottom:1px solid var(--g200);padding:0 22px;display:flex;position:sticky;top:56px;z-index:190}
+.tab{padding:0 18px;height:46px;display:flex;align-items:center;font-size:14px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;opacity:.66}
+.tab.active{opacity:1}.tab:hover{opacity:1}
+.tab.t-ov{background:var(--teal-light);color:var(--teal-dark)}
+.tab.t-dt{background:#E6F1FB;color:#0C447C}
+.tab.t-tl{background:var(--amber-light);color:var(--amber-dark)}
+.tab.active.t-ov{border-bottom-color:var(--teal)}
+.tab.active.t-dt{border-bottom-color:#185FA5}
+.tab.active.t-tl{border-bottom-color:var(--amber)}
+.pane{display:none;padding:26px 22px 60px}.pane.on{display:block}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:27px;color:var(--navy);margin-bottom:8px}
+.lead{font-size:15px;color:#3a4654;max-width:920px;margin-bottom:8px}
+.hh{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--g600);margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+.tg{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:4px}
+.tg1{background:#E6F1FB;color:#0C447C}.tg2{background:var(--teal-light);color:var(--teal-dark)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pg{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:15px 16px}
+.pg-code{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:5px;margin-bottom:8px}
+.pg-name{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:3px}.pg-goal{font-size:13px;color:#56616f}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tier{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:16px 18px;text-align:center}
+.tier.on{border:2px solid var(--teal);box-shadow:0 0 0 3px rgba(29,158,117,.08)}
+.tn{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--g600)}
+.tf{font-family:'DM Serif Display',serif;font-size:30px;color:var(--navy);margin:6px 0 2px}.tf small{font-size:13px;color:var(--g400)}
+.tl{font-size:12px;font-weight:600}.tl.now{color:var(--teal-dark)}.tl.p2{color:var(--g400)}
+.note{font-size:12px;color:var(--g400);margin-top:10px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:16px 18px}
+.si{width:30px;height:30px;border-radius:8px;color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:9px}
+.step b{font-size:14px;color:var(--navy);display:block;margin-bottom:4px}.step p{font-size:12.5px;color:#56616f}
+.dctrl{font-size:12px;color:var(--teal-dark);background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:7px;padding:6px 12px;cursor:pointer;font-weight:600}
+/* package cards - high contrast */
+.pcard{background:#fff;border:1px solid var(--g300);border-radius:11px;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 3px rgba(13,31,60,.06)}
+.pch{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 14px 14px;cursor:pointer;gap:12px;background:#fff}
+.pch:hover{background:var(--g50)}
+.pch-l{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.chev{color:var(--g400);font-size:12px;transition:transform .15s;display:inline-block}.chev.open{transform:rotate(90deg)}
+.ab{font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px}
+.pch-n{font-size:16px;font-weight:600;color:var(--navy)}.pch-g{font-size:13px;color:var(--g400)}
+.tgl{font-size:12px;font-weight:600;color:#fff;background:var(--navy);border:none;border-radius:7px;padding:7px 16px;cursor:pointer;white-space:nowrap}
+.pcb{padding:4px 18px 20px;background:var(--g50);border-top:1px solid var(--g200)}
+.prom{color:#3a4654;font-size:13.5px;max-width:860px;background:#fff;border:1px solid var(--g200);border-radius:8px;padding:10px 12px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--g200);border-radius:8px;overflow:hidden}
+th{text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;background:var(--navy);padding:8px 10px}
+td{padding:8px 10px;border-bottom:1px solid var(--g100);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.r{text-align:right}.mono{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--g600)}
+.hg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hgc{background:#fff;border:1px solid var(--g200);border-radius:8px;padding:11px 13px}
+.hgt{font-size:11px;font-weight:700;margin-bottom:6px}.hg ul{list-style:none;font-size:11.5px;color:#3a4654}
+.hg li{padding:2px 0 2px 12px;position:relative}.hg li:before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.ph2{opacity:.78}.ph2 li:before{background:#b9c1cd}
+/* shared section - clearly distinct */
+.shared{margin-top:28px;border:1px solid var(--g300);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(13,31,60,.06)}
+.shared-h{background:var(--navy);color:#fff;padding:13px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:9px}
+.shared-h .lbl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:3px 8px;border-radius:5px}
+.shared-b{padding:18px;background:#fff}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+.sbox{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:18px 20px}
+.sp{font-size:14px;font-weight:700;color:var(--navy)}.sd{font-size:12px;color:var(--g400);margin:4px 0 12px}
+.dec{display:flex;gap:10px;margin-bottom:12px}
+.rad{flex:1;display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;border:1.5px solid var(--g200);border-radius:8px;padding:9px 12px;cursor:pointer}
+.rad.ok.sel{border-color:var(--teal);background:var(--teal-light);color:var(--teal-dark)}.rad.no.sel{border-color:var(--amber);background:var(--amber-light);color:var(--amber-dark)}
+.fld{margin-bottom:10px}.fld.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fld label{display:block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--g400);margin-bottom:4px}
+.fld input,.fld textarea{width:100%;border:1px solid var(--g200);border-radius:7px;padding:8px 10px;font-size:13px;font-family:inherit;background:#fff;outline:none}
+.fld input:focus,.fld textarea:focus{border-color:var(--teal)}.fld textarea{min-height:58px;resize:vertical}.nlreq{color:var(--amber-dark)}
+.foot{font-size:11px;color:#9aa3b0;padding:18px 22px 40px;text-align:center}
+/* rollout timeline */
+.gwrap{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:18px;overflow-x:auto;margin-top:4px}
+.gantt{min-width:640px}
+.gaxis{display:grid;grid-template-columns:184px repeat(8,1fr);margin-bottom:8px}
+.gaxis .gh{padding:6px 2px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--g400);border-left:1px solid var(--g100)}
+.gaxis .gh:first-child{border-left:none}
+.gaxis .gh.now{color:var(--navy)}
+.gaxis .gh.now small{display:block;font-size:8px;color:var(--teal);font-weight:700;letter-spacing:.06em}
+.grow{display:grid;grid-template-columns:184px 1fr;align-items:center;margin-bottom:9px}
+.grl{font-size:12.5px;font-weight:700;color:var(--navy);padding-right:14px;line-height:1.25}
+.grl small{display:block;font-size:10px;color:var(--g400);font-weight:500;text-transform:none;letter-spacing:0}
+.gtrack{display:grid;grid-template-columns:repeat(8,1fr);align-items:center;position:relative;min-height:36px}
+.gc{grid-row:1;border-left:1px solid var(--g100);height:44px}
+.gc:first-child{border-left:none}
+.gbar{grid-row:1;z-index:2;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:0 11px;font-size:11.5px;font-weight:700;color:#fff;margin:0 3px;white-space:nowrap;overflow:hidden}
+.gbar.b1{background:var(--teal)}
+.gbar.b2{background:repeating-linear-gradient(45deg,#EF9F27 0 9px,#f3b052 9px 18px);color:#5a3608}
+.gbar.b3{background:var(--navy);justify-content:center;font-size:13px}
+.gnote{font-size:11.5px;color:var(--g400);margin-top:12px}
+.gphase{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.gpc{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:15px 16px}
+.gpc .pp{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.gpc h4{font-size:14px;color:var(--navy);margin-bottom:6px;font-weight:600}
+.gpc p{font-size:12.5px;color:#56616f}
+.gpc .price{font-size:12.5px;font-weight:700;color:var(--navy);margin-top:9px}
+@media(max-width:760px){.gphase{grid-template-columns:1fr}}
+@media print{body{background:#fff}.tabbar,.header{position:static}.pane{display:block!important;padding:18px}.pcb{display:block!important}.pcard,.tier,.pg,.step,.sbox,.shared{box-shadow:none;break-inside:avoid}}
+/* wholesale quote tab */
+.tab.t-wq{background:#F0EEFF;color:#3C3489}.tab.active.t-wq{border-bottom-color:#3C3489}
+.qinput{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:20px 22px;margin-bottom:20px}
+.pkgsel{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 16px}
+.pkgtog{border:1.5px solid var(--g200);border-radius:8px;padding:10px 12px;cursor:pointer;text-align:center;user-select:none;transition:all .15s}
+.pkgtog:hover{border-color:var(--g300);background:var(--g50)}.pkgtog.sel{border-color:#3C3489;background:#F0EEFF}
+.pkgtog.sel .pn{color:#3C3489}.pkgtog .pk{font-size:14px;font-weight:700;margin-bottom:2px}.pkgtog .pn{font-size:11px;color:var(--g400)}
+.qtot{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.qtc{background:#fff;border:1px solid var(--g200);border-radius:10px;padding:14px 16px}.qtc.hi{border-color:var(--navy);background:var(--navy)}
+.qtlbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--g400);margin-bottom:4px}
+.qtc.hi .qtlbl{color:#9fb4d4}.qtval{font-size:22px;font-weight:700;color:var(--navy)}.qtc.hi .qtval{color:#fff}
+.qtsub{font-size:11px;color:var(--g400);margin-top:3px}.qtc.hi .qtsub{color:#9fb4d4}
+.qsec{background:#fff;border:1px solid var(--g200);border-radius:11px;margin-bottom:14px;overflow:hidden}
+.qsec-h{background:var(--navy);color:#fff;padding:10px 16px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+.qsec-h .qstot{font-size:14px;font-weight:700;background:rgba(255,255,255,.15);padding:3px 12px;border-radius:6px}
+.qsec table{margin:0;border:none;border-radius:0;border-top:none}
+.qsec th{background:#1a3460}
+.qrow-pkg td{font-weight:700;font-size:12px;letter-spacing:.02em;padding-top:8px}
+.qrow-tot{background:var(--navy)!important}.qrow-tot td{color:#fff!important;font-weight:700}
+.qrow-term{background:#F0EEFF!important}.qrow-term td{font-weight:700;color:#3C3489!important}
+.qempty{padding:40px;text-align:center;color:var(--g400);font-size:14px}
+.qwrap{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+.qconfig{background:#fff;border:1px solid var(--g200);border-radius:11px;padding:16px;position:sticky;top:112px}
+.qresult{min-width:0}
+.qcl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--g400);margin-bottom:8px;margin-top:0}
+.pkgsel-v{display:flex;flex-direction:column;gap:5px}
+.pkgsel-v .pkgtog{text-align:left;display:flex;align-items:center;gap:10px;padding:7px 11px}
+.pkgsel-v .pkgtog .pk{font-size:13px;font-weight:700;min-width:34px}
+.pkgsel-v .pkgtog .pn{font-size:12px}
+.qqi{width:60px;border:1px solid var(--g200);border-radius:5px;padding:4px 6px;font-size:12px;text-align:right;font-family:inherit;color:var(--g800);background:#fff}
+.qqi:focus{border-color:var(--teal);outline:none}
+</style></head><body>
+<div class="header"><div class="hb"><div class="logo">CG</div><div class="bn">CareGen Intelligence &middot; Batch 1 Product Pack<small>HG &times; Talius &middot; from Product Studio v2.0 &middot; Pack v3</small></div></div><div class="pill">FOR REVIEW</div></div>
+<div class="tabbar"><div class="tab t-ov active" onclick="tab(this,'ov')">Executive Overview</div><div class="tab t-dt" onclick="tab(this,'dt')">Package Detail</div><div class="tab t-tl" onclick="tab(this,'tl')">Rollout Timeline</div><div class="tab t-wq" onclick="tab(this,'wq')">Wholesale Quote</div></div>
+<div class="pane on" id="ov">
+<div class="eyebrow">Executive overview &middot; for leadership</div>
+<h1>Five packages. One clinical problem each.</h1>
+<p class="lead">Batch 1 is five CareGen packages. Each pairs Talius sensing technology with an HG clinical service. We launch the <b>Essential</b> tier now; <b>Support</b> and <b>Managed</b> follow once the eCase care-system link is built.</p>
+<div class="hh">The five packages</div>
+<div class="pgrid"><div class="pg" style="border-top:3px solid #185FA5"><div class="pg-code" style="background:#E6F1FB;color:#185FA5">CFD</div><div class="pg-name">CareGen Falls Detection</div><div class="pg-goal">Catch falls the moment they happen</div></div><div class="pg" style="border-top:3px solid #0E4A82"><div class="pg-code" style="background:#E6F1FB;color:#0E4A82">CFP</div><div class="pg-name">CareGen Falls Prevention</div><div class="pg-goal">Stop falls before they happen</div></div><div class="pg" style="border-top:3px solid #0F6E56"><div class="pg-code" style="background:#E1F5EE;color:#0F6E56">CS</div><div class="pg-name">CareGen Skin</div><div class="pg-goal">Prevent pressure injuries</div></div><div class="pg" style="border-top:3px solid #854F0B"><div class="pg-code" style="background:#FAEEDA;color:#854F0B">CB</div><div class="pg-name">CareGen Behaviour</div><div class="pg-goal">Keep wandering residents safe</div></div><div class="pg" style="border-top:3px solid #3C3489"><div class="pg-code" style="background:#EEEDFE;color:#3C3489">CR</div><div class="pg-name">CareGen Response</div><div class="pg-goal">Prove nurse-call response & protect Star Rating</div></div></div>
+<div class="hh">Three service tiers - the client picks how much HG does</div>
+<div class="tiers">
+<div class="tier on"><div class="tn">Essential</div><div class="tf">$3.50<small> /bed/day</small></div><div class="tl now">Launches now &middot; Phase 1</div></div>
+<div class="tier"><div class="tn">Support</div><div class="tf">$4.50<small> /bed/day</small></div><div class="tl p2">Phase 2 &middot; eCase</div></div>
+<div class="tier"><div class="tn">Managed</div><div class="tf">$5.95<small> /bed/day</small></div><div class="tl p2">Phase 2 &middot; eCase</div></div></div>
+<p class="note">Fees are per package. Add $0.75 /bed/day for each additional package in a bundle. Hardware is a separate one-off purchase.</p>
+<div class="hh">How it works</div>
+<div class="flow">
+<div class="step"><div class="si" style="background:var(--talius)">1</div><b>Talius senses</b><p>Sensors capture falls, movement, vitals and call events - no cameras.</p></div>
+<div class="step"><div class="si" style="background:var(--teal)">2</div><b>HG runs the clinical service</b><p>HG configures the alerts, keeps them current, monitors and reports - the service wrapped around the tech.</p></div>
+<div class="step"><div class="si" style="background:var(--navy)">3</div><b>The client gets outcomes + evidence</b><p>Fewer incidents, and Commission-ready evidence of what was done, by whom, with what result.</p></div></div>
+<div class="hh" style="margin-top:30px">Review &amp; next step</div>
+<p class="lead">HG leadership confirms the product set, tiering and fees; Talius confirms the technology and rates on the Package Detail tab. Once you've reviewed, please reply by email to confirm Batch 1 &mdash; or flag any changes &mdash; and we'll move to implementation.</p>
+</div>
+<div class="pane" id="dt">
+<div class="eyebrow">Package detail &middot; for Talius technical &amp; rate review</div>
+<h1>The five packages in full</h1>
+<p class="lead">Each card opens to show: clinical goal, the technology &amp; subscription stack with wholesale rates, and the HG service layers. Click a card to expand.</p>
+<div style="display:flex;gap:8px;margin:8px 0 16px"><span class="dctrl" onclick="allCards(true)">Expand all</span><span class="dctrl" onclick="allCards(false)" style="background:#fff;color:var(--g600);border-color:var(--g200)">Collapse all</span></div>
+<section class="pcard" style="border-left:4px solid #185FA5">
+<div class="pch" onclick="tog('cfd')"><div class="pch-l"><span class="chev" id="cv-cfd">&#9656;</span><span class="ab" style="background:#E6F1FB;color:#185FA5">CFD</span><span class="pch-n">CareGen Falls Detection</span><span class="pch-g">Catch falls the moment they happen</span></div><button class="tgl" id="btn-cfd">Show</button></div>
+<div class="pcb" id="body-cfd" style="display:none">
+<div class="hh">1 &middot; Clinical goal</div><p class="prom">Reactive fall-event detection. Continuous passive radar (no cameras) flags a fall in real time so staff respond fast and post-fall response time is evidenced.</p>
+<div class="hh">2 &middot; Technology &amp; subscription stack <span class="tg tg1">wholesale + recurring &middot; Talius to verify</span></div>
+<table><thead><tr><th>Item</th><th>Part #</th><th class="r">Wholesale (one-off)</th><th>Basis</th><th class="r">Recurring subscription</th><th class="r">Install&nbsp;(h)</th><th class="r">Install&nbsp;($)</th></tr></thead><tbody><tr><td>Millimeter Wave Radar</td><td class="mono">TT-MWR + TC-RAD</td><td class="r">$350</td><td>per room (custom)</td><td class="r">$1.50/unit/wk</td><td class="r">2.0</td><td class="r">$300</td></tr><tr><td>BLE Gateway</td><td class="mono">TT-BGateway + TT-BGL</td><td class="r">$243</td><td>custom quantity</td><td class="r">$1.00/gateway/wk</td><td class="r">2.0</td><td class="r">$300</td></tr><tr><td>Gillie.AI clinical intelligence</td><td class="mono">TAL-GIL-AI</td><td class="r">licence</td><td>-</td><td class="r">$4.30/resident/wk &middot; Phase 2</td><td class="r">—</td><td class="r">—</td></tr><tr><td>Talius Device Staging</td><td class="mono">CAT-007</td><td class="r">$55</td><td>per device</td><td class="r">—</td><td class="r">0</td><td class="r">$0</td></tr></tbody></table><p class="note">Installation labour at $150/hr &middot; Site total calculated at quotation stage.</p>
+<div class="hh">3 &middot; HG service layers <span class="tg tg2">Essential launches now</span></div>
+<div class="hg"><div class="hgc"><div class="hgt" style="color:#185FA5">&#9679; Essential &middot; Phase 1</div><ul><li>Platform Setup</li><li>Clinical Configuration</li><li>Escalation Pathway</li><li>Go-Live</li><li>Platform Operations</li><li>Quarterly Service Review</li><li>Threshold &amp; Configuration Review</li><li>Clinical Reporting (with change log)</li><li>Outcome Review</li><li>AN-ACC Funding Review (promo)</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Support &middot; Phase 2 (eCase)</div><ul><li>Active Monitoring</li><li>Clinical Intelligence</li><li>General Clinical Risk Monitoring</li><li>Escalation Management</li><li>Executive &amp; Governance Reporting</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Managed &middot; Phase 2 (eCase)</div><ul><li>Clinical Governance Review</li><li>Coordination &amp; Follow-Up</li><li>Continuous Improvement</li><li>FCM Meeting</li><li>FCM Service &amp; Decision Register</li></ul></div></div>
+</div></section><section class="pcard" style="border-left:4px solid #0E4A82">
+<div class="pch" onclick="tog('cfp')"><div class="pch-l"><span class="chev" id="cv-cfp">&#9656;</span><span class="ab" style="background:#E6F1FB;color:#0E4A82">CFP</span><span class="pch-n">CareGen Falls Prevention</span><span class="pch-g">Stop falls before they happen</span></div><button class="tgl" id="btn-cfp">Show</button></div>
+<div class="pcb" id="body-cfp" style="display:none">
+<div class="hh">1 &middot; Clinical goal</div><p class="prom">Proactive fall prevention at the point of risk - bed-exit, toileting and nocturnal alerts let staff intervene before a fall occurs.</p>
+<div class="hh">2 &middot; Technology &amp; subscription stack <span class="tg tg1">wholesale + recurring &middot; Talius to verify</span></div>
+<table><thead><tr><th>Item</th><th>Part #</th><th class="r">Wholesale (one-off)</th><th>Basis</th><th class="r">Recurring subscription</th><th class="r">Install&nbsp;(h)</th><th class="r">Install&nbsp;($)</th></tr></thead><tbody><tr><td>Vitalerter Bed Sensor</td><td class="mono">VTS-1 + TAL-VTS1</td><td class="r">$465</td><td>per bed</td><td class="r">$4.00/bed/wk</td><td class="r">1.5</td><td class="r">$225</td></tr><tr><td>Toilet Vibration Sensor (ADL)</td><td class="mono">CAT-020</td><td class="r">$85</td><td>per bed</td><td class="r">-</td><td class="r">0.5</td><td class="r">$75</td></tr><tr><td>Gillie.AI clinical intelligence</td><td class="mono">TAL-GIL-AI</td><td class="r">licence</td><td>-</td><td class="r">$4.30/resident/wk &middot; Phase 2</td><td class="r">—</td><td class="r">—</td></tr><tr><td>BLE Gateway</td><td class="mono">TT-BGateway + TT-BGL</td><td class="r">$243</td><td>custom quantity</td><td class="r">$1.00/gateway/wk</td><td class="r">2.0</td><td class="r">$300</td></tr><tr><td>Talius Device Staging</td><td class="mono">CAT-007</td><td class="r">$55</td><td>per device</td><td class="r">—</td><td class="r">0</td><td class="r">$0</td></tr></tbody></table><p class="note">Installation labour at $150/hr &middot; Site total calculated at quotation stage.</p>
+<div class="hh">3 &middot; HG service layers <span class="tg tg2">Essential launches now</span></div>
+<div class="hg"><div class="hgc"><div class="hgt" style="color:#0E4A82">&#9679; Essential &middot; Phase 1</div><ul><li>Platform Setup</li><li>Clinical Configuration</li><li>Escalation Pathway</li><li>Go-Live</li><li>Platform Operations</li><li>Quarterly Service Review</li><li>Threshold &amp; Configuration Review</li><li>Clinical Reporting (with change log)</li><li>Outcome Review</li><li>AN-ACC Funding Review (promo)</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Support &middot; Phase 2 (eCase)</div><ul><li>Active Monitoring</li><li>Clinical Intelligence</li><li>General Clinical Risk Monitoring</li><li>Escalation Management</li><li>Executive &amp; Governance Reporting</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Managed &middot; Phase 2 (eCase)</div><ul><li>Clinical Governance Review</li><li>Coordination &amp; Follow-Up</li><li>Continuous Improvement</li><li>FCM Meeting</li><li>FCM Service &amp; Decision Register</li></ul></div></div>
+</div></section><section class="pcard" style="border-left:4px solid #0F6E56">
+<div class="pch" onclick="tog('cs')"><div class="pch-l"><span class="chev" id="cv-cs">&#9656;</span><span class="ab" style="background:#E1F5EE;color:#0F6E56">CS</span><span class="pch-n">CareGen Skin</span><span class="pch-g">Prevent pressure injuries</span></div><button class="tgl" id="btn-cs">Show</button></div>
+<div class="pcb" id="body-cs" style="display:none">
+<div class="hh">1 &middot; Clinical goal</div><p class="prom">Pressure-injury prevention through bed-sensor immobility monitoring and repositioning compliance, with sleep-quality insight.</p>
+<div class="hh">2 &middot; Technology &amp; subscription stack <span class="tg tg1">wholesale + recurring &middot; Talius to verify</span></div>
+<table><thead><tr><th>Item</th><th>Part #</th><th class="r">Wholesale (one-off)</th><th>Basis</th><th class="r">Recurring subscription</th><th class="r">Install&nbsp;(h)</th><th class="r">Install&nbsp;($)</th></tr></thead><tbody><tr><td>Vitalerter Bed Sensor</td><td class="mono">VTS-1 + TAL-VTS1</td><td class="r">$465</td><td>per bed</td><td class="r">$4.00/bed/wk</td><td class="r">1.5</td><td class="r">$225</td></tr><tr><td>Gillie.AI clinical intelligence</td><td class="mono">TAL-GIL-AI</td><td class="r">licence</td><td>-</td><td class="r">$4.30/resident/wk &middot; Phase 2</td><td class="r">—</td><td class="r">—</td></tr><tr><td>Talius Device Staging</td><td class="mono">CAT-007</td><td class="r">$55</td><td>per device</td><td class="r">—</td><td class="r">0</td><td class="r">$0</td></tr></tbody></table><p class="note">Installation labour at $150/hr &middot; Site total calculated at quotation stage.</p>
+<div class="hh">3 &middot; HG service layers <span class="tg tg2">Essential launches now</span></div>
+<div class="hg"><div class="hgc"><div class="hgt" style="color:#0F6E56">&#9679; Essential &middot; Phase 1</div><ul><li>Platform Setup</li><li>Clinical Configuration</li><li>Escalation Pathway</li><li>Go-Live</li><li>Platform Operations</li><li>Quarterly Service Review</li><li>Threshold &amp; Configuration Review</li><li>Clinical Reporting (with change log)</li><li>Outcome Review</li><li>AN-ACC Funding Review (promo)</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Support &middot; Phase 2 (eCase)</div><ul><li>Active Monitoring</li><li>Clinical Intelligence</li><li>General Clinical Risk Monitoring</li><li>Escalation Management</li><li>Executive &amp; Governance Reporting</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Managed &middot; Phase 2 (eCase)</div><ul><li>Clinical Governance Review</li><li>Coordination &amp; Follow-Up</li><li>Continuous Improvement</li><li>FCM Meeting</li><li>FCM Service &amp; Decision Register</li></ul></div></div>
+</div></section><section class="pcard" style="border-left:4px solid #854F0B">
+<div class="pch" onclick="tog('cb')"><div class="pch-l"><span class="chev" id="cv-cb">&#9656;</span><span class="ab" style="background:#FAEEDA;color:#854F0B">CB</span><span class="pch-n">CareGen Behaviour</span><span class="pch-g">Keep wandering residents safe</span></div><button class="tgl" id="btn-cb">Show</button></div>
+<div class="pcb" id="body-cb" style="display:none">
+<div class="hh">1 &middot; Clinical goal</div><p class="prom">Wandering and exit-seeking safety through door detection and real-time resident location, with restrictive-practice documentation.</p>
+<div class="hh">2 &middot; Technology &amp; subscription stack <span class="tg tg1">wholesale + recurring &middot; Talius to verify</span></div>
+<table><thead><tr><th>Item</th><th>Part #</th><th class="r">Wholesale (one-off)</th><th>Basis</th><th class="r">Recurring subscription</th><th class="r">Install&nbsp;(h)</th><th class="r">Install&nbsp;($)</th></tr></thead><tbody><tr><td>S3 Door Sensor</td><td class="mono">S03D</td><td class="r">$65</td><td>custom quantity</td><td class="r">-</td><td class="r">0.5</td><td class="r">$75</td></tr><tr><td>W3 Pro Resident Beacon</td><td class="mono">TT-W3P + TT-BPL</td><td class="r">$85</td><td>per bed</td><td class="r">$1.50/bed/wk</td><td class="r">0.5</td><td class="r">$75</td></tr><tr><td>Gillie.AI behavioural-change (CMS notes / eCase)</td><td class="mono">TAL-GIL-AI</td><td class="r">licence</td><td>-</td><td class="r">$4.30/resident/wk &middot; Phase 2</td><td class="r">—</td><td class="r">—</td></tr><tr><td>BLE Gateway</td><td class="mono">TT-BGateway + TT-BGL</td><td class="r">$243</td><td>custom quantity</td><td class="r">$1.00/gateway/wk</td><td class="r">2.0</td><td class="r">$300</td></tr><tr><td>Talius Device Staging</td><td class="mono">CAT-007</td><td class="r">$55</td><td>per device</td><td class="r">—</td><td class="r">0</td><td class="r">$0</td></tr></tbody></table><p class="note">Installation labour at $150/hr &middot; Site total calculated at quotation stage.</p>
+<div class="hh">3 &middot; HG service layers <span class="tg tg2">Essential launches now</span></div>
+<div class="hg"><div class="hgc"><div class="hgt" style="color:#854F0B">&#9679; Essential &middot; Phase 1</div><ul><li>Platform Setup</li><li>Clinical Configuration</li><li>Escalation Pathway</li><li>Go-Live</li><li>Platform Operations</li><li>Quarterly Service Review</li><li>Threshold &amp; Configuration Review</li><li>Clinical Reporting (with change log)</li><li>Outcome Review</li><li>AN-ACC Funding Review (promo)</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Support &middot; Phase 2 (eCase)</div><ul><li>Active Monitoring</li><li>Clinical Intelligence</li><li>General Clinical Risk Monitoring</li><li>Escalation Management</li><li>Executive &amp; Governance Reporting</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Managed &middot; Phase 2 (eCase)</div><ul><li>Clinical Governance Review</li><li>Coordination &amp; Follow-Up</li><li>Continuous Improvement</li><li>FCM Meeting</li><li>FCM Service &amp; Decision Register</li></ul></div></div>
+</div></section><section class="pcard" style="border-left:4px solid #3C3489">
+<div class="pch" onclick="tog('cr')"><div class="pch-l"><span class="chev" id="cv-cr">&#9656;</span><span class="ab" style="background:#EEEDFE;color:#3C3489">CR</span><span class="pch-n">CareGen Response</span><span class="pch-g">Prove nurse-call response & protect Star Rating</span></div><button class="tgl" id="btn-cr">Show</button></div>
+<div class="pcb" id="body-cr" style="display:none">
+<div class="hh">1 &middot; Clinical goal</div><p class="prom">Nurse-call response-time compliance and Commission evidence - protects the Star Rating compliance sub-rating.</p>
+<div class="hh">2 &middot; Technology &amp; subscription stack <span class="tg tg1">wholesale + recurring &middot; Talius to verify</span></div>
+<table><thead><tr><th>Item</th><th>Part #</th><th class="r">Wholesale (one-off)</th><th>Basis</th><th class="r">Recurring subscription</th><th class="r">Install&nbsp;(h)</th><th class="r">Install&nbsp;($)</th></tr></thead><tbody><tr><td>Basic Nurse Call Button</td><td class="mono">TT-NCP + TN-NCL</td><td class="r">$86</td><td>per bed</td><td class="r">-</td><td class="r">0.5</td><td class="r">$75</td></tr><tr><td>Accessible call options (cord / blow / hand / head)</td><td class="mono">E12xx series</td><td class="r">licence</td><td>-</td><td class="r">-</td><td class="r">—</td><td class="r">—</td></tr><tr><td>BLE Gateway</td><td class="mono">TT-BGateway + TT-BGL</td><td class="r">$243</td><td>custom quantity</td><td class="r">$1.00/gateway/wk</td><td class="r">2.0</td><td class="r">$300</td></tr><tr><td>Talius Device Staging</td><td class="mono">CAT-007</td><td class="r">$55</td><td>per device</td><td class="r">—</td><td class="r">0</td><td class="r">$0</td></tr></tbody></table><p class="note">Installation labour at $150/hr &middot; Site total calculated at quotation stage.</p>
+<div class="hh">3 &middot; HG service layers <span class="tg tg2">Essential launches now</span></div>
+<div class="hg"><div class="hgc"><div class="hgt" style="color:#3C3489">&#9679; Essential &middot; Phase 1</div><ul><li>Platform Setup</li><li>Clinical Configuration</li><li>Escalation Pathway</li><li>Go-Live</li><li>Platform Operations</li><li>Quarterly Service Review</li><li>Threshold &amp; Configuration Review</li><li>Clinical Reporting (with change log)</li><li>Outcome Review</li><li>AN-ACC Funding Review (promo)</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Support &middot; Phase 2 (eCase)</div><ul><li>Active Monitoring</li><li>Clinical Intelligence</li><li>General Clinical Risk Monitoring</li><li>Escalation Management</li><li>Executive &amp; Governance Reporting</li></ul></div>
+<div class="hgc ph2"><div class="hgt">&#9675; Managed &middot; Phase 2 (eCase)</div><ul><li>Clinical Governance Review</li><li>Coordination &amp; Follow-Up</li><li>Continuous Improvement</li><li>FCM Meeting</li><li>FCM Service &amp; Decision Register</li></ul></div></div>
+</div></section>
+<div class="shared">
+<div class="shared-h"><span class="lbl">Shared</span> Applies to every deployment - infrastructure &amp; subscription rates</div>
+<div class="shared-b">
+<div class="hh" style="margin-top:0">One-off shared infrastructure</div>
+<table><thead><tr><th>Item</th><th>Basis</th><th class="r">Wholesale</th></tr></thead><tbody>
+<tr><td>Talius Nurse Call head-end (platform / reporting engine)</td><td>per site</td><td class="r">$13,000</td></tr>
+<tr><td>Nurse Handset (Samsung X + config)</td><td>~1 per 10 beds</td><td class="r">$1,000 each</td></tr></tbody></table>
+<div class="hh">Recurring Talius subscription rates - Talius to confirm</div>
+<table><thead><tr><th>Subscription</th><th>Basis</th><th class="r">Rate</th><th>Applies</th></tr></thead><tbody>
+<tr><td>Talius Connect (alert messaging)</td><td>per bed + per handset</td><td class="r">$1.00 /wk each</td><td>All packages</td></tr>
+<tr><td>Nurse Call Licence</td><td>per bed</td><td class="r">$1.00 /wk</td><td>Response only</td></tr>
+<tr><td>Vitalerter</td><td>per bed</td><td class="r">$4.00 /wk</td><td>Prevention, Skin</td></tr>
+<tr><td>MW Radar</td><td>per unit</td><td class="r">$1.50 /wk</td><td>Detection</td></tr>
+<tr><td>Beacon / Duress Badge</td><td>per unit</td><td class="r">$1.50 /wk</td><td>Behaviour</td></tr>
+<tr><td>BLE Gateway</td><td>per gateway</td><td class="r">$1.00 /wk</td><td>Prevention, Behaviour, Response</td></tr>
+<tr><td>Gillie.AI clinical intelligence</td><td>per resident</td><td class="r">$4.30 /wk</td><td>Support &amp; Managed only (Phase 2)</td></tr></tbody></table>
+</div></div>
+</div>
+<div class="pane" id="tl">
+<div class="eyebrow">Rollout timeline &middot; phasing plan</div>
+<h1>When each tier comes online</h1>
+<p class="lead">All five packages go live <b>now</b> at the Essential tier. The 6-month eCase integration runs <b>Jul&ndash;Dec 2026</b>; on completion the <b>Support</b> and <b>Managed</b> tiers unlock across the same five packages from <b>Jan 2027</b>. The pipeline gates <i>tiers</i>, not packages &mdash; every package moves through the phases together.</p>
+<div class="gwrap"><div class="gantt">
+<div class="gaxis"><div class="gh"></div><div class="gh now">Jun '26<small>now</small></div><div class="gh">Jul</div><div class="gh">Aug</div><div class="gh">Sep</div><div class="gh">Oct</div><div class="gh">Nov</div><div class="gh">Dec '26</div><div class="gh">Jan '27</div></div>
+<div class="grow"><div class="grl">Essential tier<small>All 5 packages &middot; live</small></div><div class="gtrack"><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><div class="gbar b1" style="grid-column:1/9"><span>Essential live &middot; $3.50/bed/day</span><span>&rarr;</span></div></div></div>
+<div class="grow"><div class="grl">eCase integration<small>Care-system link build</small></div><div class="gtrack"><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><div class="gbar b2" style="grid-column:2/8"><span>eCase build &middot; 6 months</span></div></div></div>
+<div class="grow"><div class="grl">Support + Managed<small>Higher tiers unlock</small></div><div class="gtrack"><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><span class="gc"></span><div class="gbar b3" style="grid-column:8/9" title="Phase 2 go-live">&#10022;</div></div></div>
+</div></div>
+<p class="gnote"><b>The 6 months is our budgeted/estimated runway, not a target &mdash; sooner is better.</b> Talius has already begun integration work with eCase, so Phase 2 go-live may land earlier than Jan '27. Clock starts July 2026. Essential and Phase 2 tiers continue beyond the chart (&rarr;). Gillie.AI ($4.30/resident/wk) activates with Phase 2.</p>
+<div class="gphase">
+<div class="gpc" style="border-top:3px solid var(--teal)"><div class="pp" style="color:var(--teal-dark)">Live now</div><h4>Essential &mdash; all 5 packages</h4><p>Talius sensing + HG clinical configuration, monitoring, reporting, quarterly reviews and AN-ACC funding review. Recurring revenue starts immediately.</p><div class="price">$3.50 / bed / day</div></div>
+<div class="gpc" style="border-top:3px solid var(--amber)"><div class="pp" style="color:var(--amber-dark)">Jul&ndash;Dec 2026 &middot; est.</div><h4>eCase integration</h4><p>Build the eCase care-system link so HG can read and write clinical data. No new packages &mdash; this is the gate that unlocks the higher service tiers. Six months is our budgeted runway; Talius has already started with eCase, so we aim to compress it.</p><div class="price">$4.30 / resident / wk &middot; Gillie.AI</div></div>
+<div class="gpc" style="border-top:3px solid var(--navy)"><div class="pp" style="color:var(--navy)">From Jan 2027</div><h4>Support + Managed unlock</h4><p>The same five packages gain active monitoring, clinical intelligence, escalation management, governance review and FCM. Per-bed-day revenue steps up across the installed base.</p><div class="price">$4.50 &rarr; $5.95 / bed / day</div></div>
+</div>
+</div>
+<div class="pane" id="wq">
+<div class="eyebrow">Wholesale quote &middot; Talius partner validation</div>
+<h1>Wholesale Costing Calculator</h1>
+<div class="qwrap">
+<div class="qconfig">
+<div class="qcl">Facility</div>
+<div class="fld"><label>Client name</label><input type="text" id="qc-client" placeholder="e.g. Longridge Aged Care" oninput="renderQuote()"></div>
+<div class="fld"><label>Bed count</label><input type="number" id="qc-beds" placeholder="100" min="1" oninput="renderQuote()"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div class="fld"><label>Term (months)</label><input type="number" id="qc-term" placeholder="36" min="1" value="36" oninput="renderQuote()"></div>
+<div class="fld"><label>Handsets</label><input type="number" id="qc-hs" placeholder="auto" min="0" oninput="renderQuote()"></div>
+</div>
+<div class="qcl" style="margin-top:14px">Packages</div>
+<div class="pkgsel-v">
+<div class="pkgtog" id="pkgchk-CFD" onclick="pkgTog('CFD')"><div class="pk" style="color:#185FA5">CFD</div><div class="pn">Falls Detection</div></div>
+<div class="pkgtog" id="pkgchk-CFP" onclick="pkgTog('CFP')"><div class="pk" style="color:#0E4A82">CFP</div><div class="pn">Falls Prevention</div></div>
+<div class="pkgtog" id="pkgchk-CS" onclick="pkgTog('CS')"><div class="pk" style="color:#0F6E56">CS</div><div class="pn">Skin</div></div>
+<div class="pkgtog" id="pkgchk-CB" onclick="pkgTog('CB')"><div class="pk" style="color:#854F0B">CB</div><div class="pn">Behaviour</div></div>
+<div class="pkgtog" id="pkgchk-CR" onclick="pkgTog('CR')"><div class="pk" style="color:#3C3489">CR</div><div class="pn">Response</div></div>
+</div>
+<div id="qs-sum" style="margin-top:16px"></div>
+</div>
+<div class="qresult">
+<div id="qs-hw"></div>
+<div id="qs-lic"></div>
+<div id="qs-inst"></div>
+</div>
+</div>
+</div></div>
+<div class="foot">CareGen Intelligence &middot; HG &times; Talius &middot; Batch 1 Product Pack &middot; v3 (shared-device de-duplication fix) &middot; figures at 100-bed reference &middot; internal &amp; partner use</div>
+<script>function tab(el,id){document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('on');el.classList.add('active');}
+function tog(id){var b=document.getElementById('body-'+id),btn=document.getElementById('btn-'+id),cv=document.getElementById('cv-'+id);var hid=(b.style.display==='none');b.style.display=hid?'block':'none';btn.textContent=hid?'Hide':'Show';if(cv)cv.classList.toggle('open',hid);}
+function allCards(v){document.querySelectorAll('.pcb').forEach(b=>b.style.display=v?'block':'none');document.querySelectorAll('.tgl').forEach(t=>t.textContent=v?'Hide':'Show');document.querySelectorAll('.chev').forEach(c=>c.classList.toggle('open',v));}
+// Wholesale Quote tab
+function fmt(n){return Math.round(n).toLocaleString('en-AU');}
+var PKGDEF={
+  CFD:{label:'CareGen Falls Detection',code:'CFD',color:'#185FA5',bg:'#E6F1FB',
+    bom:[{desc:'Millimeter Wave Radar',price:350,fitoff:2.0,licWk:1.50,qtyFn:function(b){return Math.ceil(b*0.5);}},
+         {desc:'BLE Gateway',price:243,fitoff:2.0,licWk:1.00,qtyFn:function(b){return 8;}}]},
+  CFP:{label:'CareGen Falls Prevention',code:'CFP',color:'#0E4A82',bg:'#E6F1FB',
+    bom:[{desc:'Vitalerter Bed Sensor',price:465,fitoff:1.5,licWk:4.00,qtyFn:function(b){return b;}},
+         {desc:'Toilet Vibration Sensor',price:85,fitoff:0.5,licWk:0,qtyFn:function(b){return b;}},
+         {desc:'BLE Gateway',price:243,fitoff:2.0,licWk:1.00,qtyFn:function(b){return 8;}}]},
+  CS:{label:'CareGen Skin',code:'CS',color:'#0F6E56',bg:'#E1F5EE',
+    bom:[{desc:'Vitalerter Bed Sensor',price:465,fitoff:1.5,licWk:4.00,qtyFn:function(b){return b;}}]},
+  CB:{label:'CareGen Behaviour',code:'CB',color:'#854F0B',bg:'#FAEEDA',
+    bom:[{desc:'S3 Door Sensor',price:65,fitoff:0.5,licWk:0,qtyFn:function(b){return 30;}},
+         {desc:'W3 Pro Resident Beacon',price:85,fitoff:0.5,licWk:1.50,qtyFn:function(b){return b;}},
+         {desc:'BLE Gateway',price:243,fitoff:2.0,licWk:1.00,qtyFn:function(b){return 8;}}]},
+  CR:{label:'CareGen Response',code:'CR',color:'#3C3489',bg:'#EEEDFE',ncLic:true,
+    bom:[{desc:'Basic Nurse Call Button',price:86,fitoff:0.5,licWk:0,qtyFn:function(b){return b;}},
+         {desc:'BLE Gateway',price:243,fitoff:2.0,licWk:1.00,qtyFn:function(b){return 8;}}]}
+};
+var _st={beds:0,term:36,hs:0,pkgs:[],rows:[]};
+function pkgTog(id){document.getElementById('pkgchk-'+id).classList.toggle('sel');renderQuote();}
+// De-duplicate devices shared across selected packages (e.g. Vitalerter, BLE Gateway).
+// A shared device is counted ONCE — mirrors the Product Studio BOM engine (seen[key]).
+// Later occurrences are flagged shared:true and shown at $0/qty 0 so nothing double-charges.
+function _buildRows(){
+  var seen={},rows=[];
+  _st.pkgs.forEach(function(pkgId){
+    PKGDEF[pkgId].bom.forEach(function(item,idx){
+      var key=item.desc;
+      var shared=Object.prototype.hasOwnProperty.call(seen,key);
+      var firstPkg=shared?seen[key]:pkgId;
+      if(!shared)seen[key]=pkgId;
+      rows.push({pkgId:pkgId,idx:idx,key:key,item:item,shared:shared,firstPkg:firstPkg,defQty:shared?0:item.qtyFn(_st.beds)});
+    });
+  });
+  return rows;
+}
+function renderQuote(){
+  _st.beds=parseInt(document.getElementById('qc-beds').value)||0;
+  _st.term=parseInt(document.getElementById('qc-term').value)||36;
+  var hsVal=document.getElementById('qc-hs').value;
+  _st.hs=hsVal?parseInt(hsVal):(_st.beds?Math.max(1,Math.round(_st.beds/10)):0);
+  _st.pkgs=[];
+  ['CFD','CFP','CS','CB','CR'].forEach(function(id){
+    if(document.getElementById('pkgchk-'+id).classList.contains('sel'))_st.pkgs.push(id);
+  });
+  _st.rows=_buildRows();
+  var emp='<div class="qsec"><div class="qempty">Enter bed count and select at least one package to view costs</div></div>';
+  if(!_st.beds||!_st.pkgs.length){
+    document.getElementById('qs-hw').innerHTML=emp;
+    document.getElementById('qs-lic').innerHTML='';
+    document.getElementById('qs-inst').innerHTML='';
+    document.getElementById('qs-sum').innerHTML='';
+    return;
+  }
+  var th='<thead><tr><th>Item</th><th class="r">Unit/rate</th><th class="r">Qty</th><th class="r">Line</th></tr></thead>';
+  var hw='<div class="qsec"><div class="qsec-h">1 &nbsp;&middot;&nbsp; Hardware &amp; technology (once-off)<span class="qstot" id="hw-hdr-tot"></span></div>'
+    +'<table>'+th+'<tbody>'
+    +'<tr><td>Talius Nurse Call head-end <span style="font-size:10px;color:var(--g400)">(site)</span></td><td class="r">$13,000</td><td class="r">1</td><td class="r">$13,000</td></tr>';
+  _st.pkgs.forEach(function(pkgId){
+    var pkg=PKGDEF[pkgId];
+    hw+='<tr class="qrow-pkg" style="background:'+pkg.bg+'"><td colspan="3" style="color:'+pkg.color+'">'+pkg.code+' &mdash; '+pkg.label+'</td><td class="r" style="color:'+pkg.color+'" id="psub-'+pkgId+'"></td></tr>';
+    _st.rows.filter(function(r){return r.pkgId===pkgId;}).forEach(function(r){
+      if(r.shared){
+        hw+='<tr style="opacity:.5"><td style="padding-left:20px">'+r.item.desc+' <span style="font-size:10px;color:var(--g400)">&mdash; shared with '+r.firstPkg+', counted once</span></td><td class="r">$'+r.item.price+'</td><td class="r">0</td><td class="r">$0</td></tr>';
+      }else{
+        hw+='<tr><td style="padding-left:20px">'+r.item.desc+'</td><td class="r">$'+r.item.price+'</td>'
+          +'<td class="r"><input type="number" class="qqi" id="q-'+pkgId+'-'+r.idx+'" value="'+r.defQty+'" min="0" oninput="recalc()"></td>'
+          +'<td class="r" id="lt-'+pkgId+'-'+r.idx+'"></td></tr>';
+      }
+    });
+  });
+  hw+='<tr><td>Nurse Handset <span style="font-size:10px;color:var(--g400)">(Samsung X + config)</span></td><td class="r">$1,000</td>'
+    +'<td class="r"><input type="number" class="qqi" id="q-HS" value="'+_st.hs+'" min="0" oninput="recalc()"></td>'
+    +'<td class="r" id="lt-HS"></td></tr>'
+    +'</tbody><tfoot>'
+    +'<tr><td colspan="3" style="text-align:right;font-size:11px;color:var(--g500)">Wholesale subtotal</td><td class="r" style="font-size:11px;color:var(--g700)" id="hw-sub-tot"></td></tr>'
+    +'<tr><td colspan="3" style="text-align:right;font-size:11px;color:var(--g500)">+ Hardware margin (0%)</td><td class="r" style="font-size:11px;color:var(--g700)">$0</td></tr>'
+    +'<tr style="border-top:1px solid var(--g200)"><td colspan="3" style="text-align:right;font-size:11px;font-weight:600;color:var(--navy)">Hardware (wholesale)</td><td class="r" style="font-size:11px;font-weight:600;color:var(--navy)" id="hw-foot-tot"></td></tr>'
+    +'</tfoot></table></div>';
+  document.getElementById('qs-hw').innerHTML=hw;
+  _updateAll();
+}
+function recalc(){_updateAll();}
+function _getQtys(){
+  var q={};
+  _st.rows.forEach(function(r){
+    if(r.shared){q[r.pkgId+'-'+r.idx]=0;return;}
+    var el=document.getElementById('q-'+r.pkgId+'-'+r.idx);
+    q[r.pkgId+'-'+r.idx]=el?(parseInt(el.value)||0):0;
+  });
+  var hs=document.getElementById('q-HS');
+  q['HS']=hs?(parseInt(hs.value)||0):0;
+  return q;
+}
+function _updateAll(){
+  var STAGING_UNIT=55,PM_FLAT=3900,SITE_BASE=13000,SITE_LABOUR=1500,LABOUR_RATE=150;
+  var q=_getQtys();
+  var totalDevWholesale=0,totalDevUnits=0,totalFitLabour=0,totalDevLicWk=0,ncLicActive=false;
+  var pkgSub={};
+  _st.pkgs.forEach(function(pkgId){pkgSub[pkgId]=0;if(PKGDEF[pkgId].ncLic)ncLicActive=true;});
+  _st.rows.forEach(function(r){
+    var qty=q[r.pkgId+'-'+r.idx];
+    var total=qty*r.item.price,labour=qty*r.item.fitoff*LABOUR_RATE,licWk=qty*r.item.licWk;
+    pkgSub[r.pkgId]+=total;
+    totalDevWholesale+=total;totalDevUnits+=qty;totalFitLabour+=labour;totalDevLicWk+=licWk;
+    var ltEl=document.getElementById('lt-'+r.pkgId+'-'+r.idx);
+    if(ltEl)ltEl.textContent='$'+fmt(total);
+  });
+  _st.pkgs.forEach(function(pkgId){
+    var psEl=document.getElementById('psub-'+pkgId);
+    if(psEl)psEl.textContent='$'+fmt(pkgSub[pkgId]);
+  });
+  var handsets=q['HS'];
+  // Include handsets in staging count — matches Studio quoteFigures() deviceUnits loop (line 1424)
+  var totalUnitsForStaging=totalDevUnits+handsets;
+  var stagingTotal=totalUnitsForStaging*STAGING_UNIT;
+  var handsetWh=handsets*1000;
+  // Combined fitoff: sensor devices + handsets (2h each) — matches Studio labour accumulation
+  var handsetFit=handsets*2*LABOUR_RATE;
+  var combinedFit=totalFitLabour+handsetFit;
+  var fitHours=combinedFit/LABOUR_RATE;
+  // Section 1: hardware wholesale — NO staging (staging moves to Section 3 per Studio)
+  var hwDevicesWholesale=SITE_BASE+totalDevWholesale+handsetWh;
+  var installTotal=stagingTotal+combinedFit+SITE_LABOUR+PM_FLAT;
+  var grandTotal=hwDevicesWholesale+installTotal;
+  var beds=_st.beds,term=_st.term;
+  // Update Section 1
+  var ltHs=document.getElementById('lt-HS');if(ltHs)ltHs.textContent='$'+fmt(handsetWh);
+  var hwSub=document.getElementById('hw-sub-tot');if(hwSub)hwSub.textContent='$'+fmt(hwDevicesWholesale);
+  var hwH=document.getElementById('hw-hdr-tot');if(hwH)hwH.textContent='$'+fmt(hwDevicesWholesale);
+  var hwF=document.getElementById('hw-foot-tot');if(hwF)hwF.textContent='$'+fmt(hwDevicesWholesale);
+  // Section 2: Licences — labels match Studio licLines exactly
+  var talMsgWk=beds,talHsWk=handsets,ncWk=ncLicActive?beds:0,totalWk=talMsgWk+talHsWk+ncWk+totalDevLicWk;
+  var totalMo=totalWk/7*30.42;
+  var th2='<thead><tr><th>Subscription</th><th class="r">Unit/rate</th><th class="r">Qty</th><th class="r">Per week</th></tr></thead>';
+  var lic='<div class="qsec"><div class="qsec-h">2 &nbsp;&middot;&nbsp; Talius licences &amp; subscriptions (recurring)<span class="qstot">$'+fmt(totalWk)+'/wk</span></div>'
+    +'<table>'+th2+'<tbody>'
+    +'<tr><td>Talius Connect &mdash; messaging <span style="font-size:10px;color:var(--g400)">per bed/wk</span></td><td class="r">$1.00</td><td class="r">'+beds+'</td><td class="r">$'+fmt(talMsgWk)+'/wk</td></tr>'
+    +'<tr><td>Talius Connect &mdash; handset <span style="font-size:10px;color:var(--g400)">per handset/wk</span></td><td class="r">$1.00</td><td class="r">'+handsets+'</td><td class="r">$'+fmt(talHsWk)+'/wk</td></tr>';
+  if(ncLicActive)lic+='<tr><td>Nurse Call Licence <span style="font-size:10px;color:var(--g400)">per bed/wk</span></td><td class="r">$1.00</td><td class="r">'+beds+'</td><td class="r">$'+fmt(ncWk)+'/wk</td></tr>';
+  _st.rows.forEach(function(r){
+    if(r.shared)return;
+    if(r.item.licWk>0){var qty=q[r.pkgId+'-'+r.idx],licWk=qty*r.item.licWk;
+      lic+='<tr><td style="padding-left:20px">'+r.item.desc+' <span style="font-size:10px;color:var(--g400)">per unit/wk</span></td><td class="r">$'+r.item.licWk.toFixed(2)+'</td><td class="r">'+qty+'</td><td class="r">$'+fmt(licWk)+'/wk</td></tr>';}
+  });
+  lic+='</tbody><tfoot>'
+    +'<tr style="border-top:1px solid var(--g200)"><td colspan="3" style="text-align:right;font-size:11px;font-weight:600;color:var(--navy)">Recurring subtotal</td><td class="r" style="font-size:11px;font-weight:600;color:var(--navy)">$'+fmt(totalWk)+'/wk</td></tr>'
+    +'<tr><td colspan="3" style="text-align:right;font-size:10px;color:var(--g400)">≈ monthly</td><td class="r" style="font-size:10px;color:var(--g400)">$'+fmt(Math.round(totalMo))+'/mo</td></tr>'
+    +'</tfoot></table></div>';
+  document.getElementById('qs-lic').innerHTML=lic;
+  // Section 3: Installation — matches Studio installLines structure (staging first, flat rows, no unit/qty cols)
+  var inst='<div class="qsec"><div class="qsec-h">3 &nbsp;&middot;&nbsp; Installation (once-off)<span class="qstot">$'+fmt(installTotal)+'</span></div>'
+    +'<table><tbody>'
+    +'<tr><td colspan="3" style="font-size:11px;color:var(--g800)">Device staging ('+totalUnitsForStaging+' × $'+STAGING_UNIT+')</td><td class="r" style="font-size:11px;color:var(--g700)">$'+fmt(stagingTotal)+'</td></tr>'
+    +'<tr><td colspan="3" style="font-size:11px;color:var(--g800)">Fit-off labour ('+fitHours.toFixed(1)+' h @ $'+LABOUR_RATE+')</td><td class="r" style="font-size:11px;color:var(--g700)">$'+fmt(combinedFit)+'</td></tr>'
+    +'<tr><td colspan="3" style="font-size:11px;color:var(--g800)">Site head-end install (10 h @ $'+LABOUR_RATE+')</td><td class="r" style="font-size:11px;color:var(--g700)">$'+fmt(SITE_LABOUR)+'</td></tr>'
+    +'<tr><td colspan="3" style="font-size:11px;color:var(--g800)">PM &amp; training</td><td class="r" style="font-size:11px;color:var(--g700)">$'+fmt(PM_FLAT)+'</td></tr>'
+    +'</tbody><tfoot>'
+    +'<tr style="border-top:1px solid var(--g200)"><td colspan="3" style="text-align:right;font-size:11px;font-weight:600;color:var(--navy)">Installation subtotal</td><td class="r" style="font-size:11px;font-weight:600;color:var(--navy)">$'+fmt(installTotal)+'</td></tr>'
+    +'</tfoot></table></div>';
+  document.getElementById('qs-inst').innerHTML=inst;
+  // Summary panel
+  var client=document.getElementById('qc-client').value;
+  var totalTerm=Math.round(totalMo*term);
+  var sum='<div style="border-top:1px solid var(--g200);padding-top:14px;margin-top:4px">'
+    +'<div class="qcl">Summary'+(client?' &mdash; '+client:'')+'</div>'
+    +'<div style="display:flex;flex-direction:column;gap:6px">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--g600)">Hardware</span><span style="font-size:13px;font-weight:700;color:var(--navy)">$'+fmt(hwDevicesWholesale)+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--g600)">Installation</span><span style="font-size:13px;font-weight:700;color:var(--navy)">$'+fmt(installTotal)+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--g200);padding-top:8px;margin-top:2px"><span style="font-size:12px;font-weight:700;color:var(--navy)">One-off total</span><span style="font-size:15px;font-weight:700;color:var(--navy)">$'+fmt(grandTotal)+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><span style="font-size:12px;color:var(--g600)">Weekly recurring</span><span style="font-size:13px;font-weight:700;color:var(--g800)">$'+fmt(totalWk)+'/wk</span></div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--g600)">Monthly (~30d)</span><span style="font-size:13px;font-weight:700;color:var(--g800)">$'+fmt(Math.round(totalMo))+'/mo</span></div>'
+    +'</div>'
+    +'<div style="background:var(--navy);border-radius:8px;padding:10px 12px;margin-top:12px"><div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px">Over-term ('+term+' mo)</div>'
+    +'<div style="font-size:16px;font-weight:700;color:#fff">$'+fmt(grandTotal+totalTerm)+'</div>'
+    +'<div style="font-size:10px;color:rgba(255,255,255,.4)">one-off + all recurring</div></div>'
+    +'</div>';
+  document.getElementById('qs-sum').innerHTML=sum;
+}
+window.addEventListener('load',function(){renderQuote();});
+</script></body></html>
