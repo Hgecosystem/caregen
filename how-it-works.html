@@ -803,6 +803,95 @@ svg.pipe { width: 100%; height: auto; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .cap-card:hover { transform: none; }
 }
+
+/* ═══ Five Packages: card strokes sampled from the hero gradient ═══ */
+.pkg-stroke-1 { border-color: rgba(51,23,107,0.9); }
+.pkg-stroke-2 { border-color: rgba(74,33,140,0.9); }
+.pkg-stroke-3 { border-color: rgba(97,44,173,0.85); }
+.pkg-stroke-4 { border-color: rgba(154,90,188,0.75); }
+.pkg-stroke-5 { border-color: rgba(245,181,51,0.65); }
+.pkg-stroke-1:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(51,23,107,0.55); border-color: rgba(51,23,107,1); }
+.pkg-stroke-2:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(74,33,140,0.55); border-color: rgba(74,33,140,1); }
+.pkg-stroke-3:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(97,44,173,0.55); border-color: rgba(97,44,173,1); }
+.pkg-stroke-4:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(154,90,188,0.6); border-color: rgba(154,90,188,1); }
+.pkg-stroke-5:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(245,181,51,0.6); border-color: rgba(245,181,51,1); }
+
+/* ═══ How It Works: extra scene animations ═══════════════════════ */
+
+/* Scene 1 — breathing glow + gentle float on the mark */
+@keyframes scene1-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.85; } }
+.scene1-visual::before { animation: scene1-pulse 4s ease-in-out infinite; }
+@keyframes scene1-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.scene1-mark { animation: scene1-float 5s ease-in-out infinite; }
+
+/* Scene 2 — decline line draws in, then pulses at the fall point */
+.decline-chart { margin: 26px 0 4px; max-width: 420px; }
+.decline-line { stroke-dasharray: 340; stroke-dashoffset: 340; animation: decline-draw 1.8s ease-out forwards; animation-delay: 0.2s; }
+@keyframes decline-draw { to { stroke-dashoffset: 0; } }
+.decline-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 2s; }
+@keyframes decline-dot-in { to { opacity: 1; } }
+.decline-ping { opacity: 0; animation: pipe-ping 1.8s ease-out infinite; animation-delay: 2.2s; }
+.decline-label { font-size: 8.5px; letter-spacing: 0.06em; fill: var(--text-3); }
+.decline-label--fall { fill: #e0708a; font-weight: 700; }
+
+/* Scene 3 — sequential relay highlight across the 3-step flow */
+@keyframes flow-relay {
+  0%, 22%, 100% { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); box-shadow: none; }
+  8% { background: rgba(245,181,51,0.22); border-color: rgba(245,181,51,0.55); box-shadow: 0 0 20px rgba(245,181,51,0.25); }
+}
+.how-flow-step { animation: flow-relay 5.4s ease-in-out infinite; }
+.how-flow-step:nth-child(1) { animation-delay: 0s; }
+.how-flow-step:nth-child(3) { animation-delay: 1.8s; }
+.how-flow-step:nth-child(5) { animation-delay: 3.6s; }
+
+/* Scene 5 — sequential relay highlight across the 3 tiers */
+@keyframes tier-relay {
+  0%, 22%, 100% { border-color: rgba(255,255,255,0.12); box-shadow: none; }
+  8% { border-color: rgba(245,181,51,0.55); box-shadow: 0 0 26px rgba(245,181,51,0.28); }
+}
+.how-tier { animation: tier-relay 7.2s ease-in-out infinite; }
+.how-tier:nth-child(1) { animation-delay: 0s; }
+.how-tier:nth-child(2) { animation-delay: 2.4s; }
+.how-tier:nth-child(3) { animation-delay: 4.8s; }
+
+/* Scene 6 — staggered pop-in + hover glow on outcome cards */
+@keyframes outcome-pop { from { opacity: 0; transform: translateY(14px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.how-outcome { animation: outcome-pop 0.6s cubic-bezier(0.16,1,0.3,1) both; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+.how-outcome:nth-child(1) { animation-delay: 0.05s; }
+.how-outcome:nth-child(2) { animation-delay: 0.18s; }
+.how-outcome:nth-child(3) { animation-delay: 0.31s; }
+.how-outcome:hover { transform: translateY(-4px); border-color: rgba(245,181,51,0.4); box-shadow: 0 14px 34px rgba(5,0,37,0.3), 0 0 40px rgba(245,181,51,0.25); }
+
+@media (prefers-reduced-motion: reduce) {
+  .scene1-visual::before, .scene1-mark, .decline-line, .decline-dot, .decline-ping,
+  .how-flow-step, .how-tier, .how-outcome { animation: none; opacity: 1; }
+}
+
+/* ═══ Contact page: discovery call form ═══════════════════════════ */
+.contact-form { max-width: 520px; margin: 0 auto 8px; text-align: left; }
+.form-row { display: flex; gap: 16px; }
+.form-row .form-field { flex: 1; }
+.form-field { margin-bottom: 18px; display: flex; flex-direction: column; gap: 7px; }
+.form-field label { font-size: 12.5px; font-weight: 600; color: var(--text-2); }
+.form-field input {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px; padding: 12px 14px; color: #fff;
+  font-family: var(--font); font-size: 14.5px;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.form-field input::placeholder { color: var(--text-3); }
+.form-field input:focus {
+  outline: none; border-color: var(--cg-accent);
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 0 0 3px rgba(245,181,51,0.18);
+}
+.contact-form-submit { width: 100%; justify-content: center; margin-top: 4px; }
+.form-success { text-align: center; padding: 8px 0 4px; max-width: 460px; margin: 0 auto; }
+.form-success-title { font-size: 19px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+.form-success-body { font-size: 15px; color: var(--text-2); line-height: 1.6; }
+@media (max-width: 600px) {
+  .form-row { flex-direction: column; gap: 0; }
+}
 </style>
 </head>
 <body>
@@ -913,6 +1002,16 @@ svg.pipe { width: 100%; height: auto; display: block; }
           <p class="how-eyebrow">The Pattern</p>
           <h3 class="how-heading">A resident's mobility fades quietly. Until the fall that changes everything.</h3>
           <p class="how-body">The decline is often invisible until the moment it isn't, and that moment is costly on every measure that matters: to the resident, to the family, and to the service. Today, most homes act after the fall, because there's rarely been a practical way to act before it.</p>
+          <div class="decline-chart" aria-hidden="true">
+            <svg viewBox="0 0 320 90" width="100%" height="90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="82" x2="320" y2="82" stroke="rgba(255,255,255,0.10)" stroke-width="1"></line>
+              <path class="decline-line" d="M8,18 C70,24 120,32 165,42 C210,52 235,54 258,64 C272,70 278,74 284,80" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round"></path>
+              <circle class="decline-dot" cx="284" cy="80" r="5" fill="#e0708a"></circle>
+              <circle class="decline-ping" cx="284" cy="80" r="5" fill="none" stroke="#e0708a" stroke-width="2"></circle>
+              <text x="8" y="14" class="decline-label">MOBILITY</text>
+              <text x="238" y="76" class="decline-label decline-label--fall">THE FALL</text>
+            </svg>
+          </div>
         </div>
 
         <div class="how-scene" data-scene="3">
