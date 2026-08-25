@@ -455,7 +455,7 @@ main { position: relative; z-index: 1; }
 .how-chip { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 18px; font-size: 14px; color: var(--text-1); }
 .how-chip svg { flex-shrink: 0; }
 
-.scene1-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center; }
+.scene1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
 .scene1-visual { display: flex; align-items: center; justify-content: center; position: relative; }
 .scene1-visual::before {
   content: ''; position: absolute; width: 130%; height: 130%; border-radius: 50%;
@@ -463,10 +463,20 @@ main { position: relative; z-index: 1; }
   filter: blur(30px);
 }
 .scene1-mark { width: 100%; max-width: 340px; position: relative; z-index: 1; filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+.rising-bar { width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto; position: relative; z-index: 1; filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+.rising-bar-level { transform-box: fill-box; animation: rising-bar-oscillate 4.5s ease-in-out infinite; }
+@keyframes rising-bar-oscillate {
+  0%, 100% { transform: translateY(94px); }
+  50% { transform: translateY(20px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rising-bar-level { animation: none; transform: translateY(50px); }
+}
 @media (max-width: 900px) {
   .scene1-grid { grid-template-columns: 1fr; }
   .scene1-visual { order: -1; margin-bottom: 12px; }
   .scene1-mark { max-width: 220px; }
+  .rising-bar { max-width: 220px; }
 }
 
 .how-flow { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -993,7 +1003,34 @@ svg.pipe { width: 100%; height: auto; display: block; }
               </div>
             </div>
             <div class="scene1-visual" aria-hidden="true">
-              <img src="images/caregen-mark-color.png" alt="" class="scene1-mark">
+              <svg class="rising-bar" viewBox="0 0 120 120" width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="risingBarGrad" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0%" stop-color="#000000"></stop>
+                    <stop offset="18%" stop-color="#060312"></stop>
+                    <stop offset="34%" stop-color="#150a30"></stop>
+                    <stop offset="52%" stop-color="#33176b"></stop>
+                    <stop offset="72%" stop-color="#612CAD"></stop>
+                    <stop offset="84%" stop-color="#9a5abc"></stop>
+                    <stop offset="100%" stop-color="#F5B533"></stop>
+                  </linearGradient>
+                  <clipPath id="risingBarClip">
+                    <circle cx="60" cy="60" r="52"></circle>
+                  </clipPath>
+                  <filter id="risingBarBlur" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+                  </filter>
+                </defs>
+                <circle cx="60" cy="60" r="52" fill="rgba(255,255,255,0.04)"></circle>
+                <g clip-path="url(#risingBarClip)">
+                  <g class="rising-bar-level" filter="url(#risingBarBlur)">
+                    <rect x="0" y="0" width="120" height="140" fill="url(#risingBarGrad)" opacity="0.6"></rect>
+                    <rect x="0" y="-3" width="120" height="6" fill="var(--cg-accent)"></rect>
+                  </g>
+                </g>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="url(#risingBarGrad)" stroke-width="2"></circle>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"></circle>
+              </svg>
             </div>
           </div>
         </div>
