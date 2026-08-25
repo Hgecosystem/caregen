@@ -432,11 +432,11 @@ main { position: relative; z-index: 1; }
 .how-meta {
   position: relative; z-index: 1;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 4% 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3);
+  padding: 18px 6% 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3);
 }
 .how-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cg-accent); display: inline-block; margin-right: 8px; }
 
-.how-stage { position: relative; z-index: 1; padding: 36px 6% 8px; min-height: 360px; }
+.how-stage { position: relative; z-index: 1; padding: 36px 6% 8px; min-height: 360px; display: flex; flex-direction: column; }
 .how-scene { display: none; }
 .how-scene.is-active { display: block; animation: how-fade 0.5s ease both; }
 .how-scene.is-measuring { display: block; position: absolute; visibility: hidden; width: 100%; pointer-events: none; }
@@ -449,13 +449,13 @@ main { position: relative; z-index: 1; }
 }
 .how-eyebrow::before { content: ''; width: 16px; height: 1px; background: var(--cg-accent); }
 .how-heading { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--text-1); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 18px; max-width: 640px; }
-.how-body { font-size: 15.5px; line-height: 1.75; color: var(--text-2); max-width: 600px; margin-bottom: 24px; }
+.how-body { font-size: 15.5px; line-height: 1.75; color: var(--text-2); max-width: 640px; margin-bottom: 24px; }
 
-.how-chips { display: flex; flex-direction: column; gap: 10px; max-width: 520px; margin-bottom: 8px; }
+.how-chips { display: flex; flex-direction: column; gap: 10px; max-width: 640px; margin-bottom: 8px; }
 .how-chip { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 18px; font-size: 14px; color: var(--text-1); }
 .how-chip svg { flex-shrink: 0; }
 
-.scene1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+.scene1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; transform: translateY(-20px); }
 .scene1-visual { display: flex; align-items: center; justify-content: center; position: relative; }
 .scene1-visual::before {
   content: ''; position: absolute; width: 130%; height: 130%; border-radius: 50%;
@@ -901,6 +901,15 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .form-success-body { font-size: 15px; color: var(--text-2); line-height: 1.6; }
 @media (max-width: 600px) {
   .form-row { flex-direction: column; gap: 0; }
+}
+
+/* ═══ Scene 1: vertically center the text + animation block ═══ */
+.how-scene[data-scene="1"].is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
 }
 </style>
 </head>
