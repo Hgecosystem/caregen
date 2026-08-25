@@ -469,8 +469,22 @@ main { position: relative; z-index: 1; }
   0%, 100% { transform: translateY(94px); }
   50% { transform: translateY(20px); }
 }
+.rising-bar-label {
+  font-family: var(--font); font-size: 3.4px; font-weight: 400; letter-spacing: 0.4px;
+  fill: #fff;
+  animation: rising-bar-oscillate 4.5s ease-in-out infinite, rising-bar-label-fade 4.5s ease-in-out infinite;
+}
+@keyframes rising-bar-label-fade {
+  0%   { opacity: 1; }
+  32%  { opacity: 1; }
+  47%  { opacity: 0; }
+  53%  { opacity: 0; }
+  68%  { opacity: 1; }
+  100% { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   .rising-bar-level { animation: none; transform: translateY(50px); }
+  .rising-bar-label { animation: none; transform: translateY(50px); opacity: 1; }
 }
 @media (max-width: 900px) {
   .scene1-grid { grid-template-columns: 1fr; }
