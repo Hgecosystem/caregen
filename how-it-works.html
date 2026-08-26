@@ -1127,7 +1127,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
                   <circle class="decline-dot" cx="24" cy="26" r="5" fill="var(--text-3)" filter="url(#declineGlow)"></circle>
 
                   <text x="29" y="16" class="decline-label">MOBILITY</text>
-                  <text x="125" y="16" class="decline-label decline-label--fall">THE FALL</text>
+                  <text x="110" y="16" class="decline-label decline-label--fall">THE FALL</text>
                 </svg>
               </div>
             </div>
@@ -1460,7 +1460,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 
     var downPoints = [[24, 26], [108, 26], [200, 100], [288, 168]];
     var restPoint = [108, 26];
-    var downDuration = 1600;
+    var downDuration = 2600;
     var fadeDuration = 150;
 
     function polylineLength(points) {
@@ -1532,15 +1532,21 @@ svg.pipe { width: 100%; height: auto; display: block; }
       requestAnimationFrame(frame);
     }
 
+    dot.style.opacity = 0;
+
     setTimeout(function () {
-      moveAlong(downPoints, downDuration, function () {
-        continueAndFadeOut(fadeDuration, function () {
-          dot.setAttribute('cx', restPoint[0]);
-          dot.setAttribute('cy', restPoint[1]);
-          fadeOpacity(0, 1, 150);
+      fadeOpacity(0, 1, 400, function () {
+        moveAlong(downPoints, downDuration, function () {
+          continueAndFadeOut(fadeDuration, function () {
+            dot.setAttribute('cx', restPoint[0]);
+            dot.setAttribute('cy', restPoint[1]);
+            setTimeout(function () {
+              fadeOpacity(0, 1, 150);
+            }, 300);
+          });
         });
       });
-    }, 600);
+    }, 300);
   }
 
   function syncStageHeight() {
