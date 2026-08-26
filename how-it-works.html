@@ -873,20 +873,18 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .scene1-mark { animation: scene1-float 5s ease-in-out infinite; }
 
 /* Scene 2 — glowing stepped decline chart, draws in then pulses at the fall point */
-.decline-chart { width: 100%; max-width: 320px; position: relative; z-index: 1; }
+.decline-chart { width: 100%; max-width: 420px; position: relative; z-index: 1; }
 .decline-chart svg { display: block; width: 100%; height: auto; }
-.decline-area { opacity: 0; animation: decline-fade-in 0.8s ease-out forwards; animation-delay: 1.6s; }
-.decline-guide { opacity: 0; animation: decline-fade-in 0.8s ease-out forwards; animation-delay: 1.8s; }
+.decline-area { opacity: 0; animation: decline-fade-in 0.5s ease-out forwards; animation-delay: 0s; }
+.decline-guide { opacity: 0; animation: decline-fade-in 0.5s ease-out forwards; animation-delay: 0s; }
 @keyframes decline-fade-in { to { opacity: 1; } }
 .decline-start-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 0s; }
-.decline-start-line { opacity: 0; animation: decline-fade-in 0.6s ease-out forwards; animation-delay: 0.1s; }
-.decline-line { stroke-dasharray: 280; stroke-dashoffset: 280; animation: decline-draw 1.6s ease-out forwards; animation-delay: 0.3s; }
+.decline-start-line { opacity: 0; animation: decline-fade-in 0.5s ease-out forwards; animation-delay: 0s; }
+.decline-line { stroke-dasharray: 280; stroke-dashoffset: 280; animation: decline-draw 0.6s ease-out forwards; animation-delay: 0s; }
 @keyframes decline-draw { to { stroke-dashoffset: 0; } }
-.decline-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 1.9s; }
 @keyframes decline-dot-in { to { opacity: 1; } }
-.decline-ping { opacity: 0; animation: pipe-ping 1.8s ease-out infinite; animation-delay: 2.1s; }
 .decline-label { font-size: 8.5px; letter-spacing: 0.06em; fill: var(--text-3); }
-.decline-label--fall { fill: #e0708a; font-weight: 700; }
+.decline-label--fall { fill: var(--text-3); }
 
 /* Scene 3 — sequential relay highlight across the 3-step flow */
 @keyframes flow-relay {
@@ -917,7 +915,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .how-outcome:hover { transform: translateY(-4px); border-color: rgba(245,181,51,0.4); box-shadow: 0 14px 34px rgba(5,0,37,0.3), 0 0 40px rgba(245,181,51,0.25); }
 
 @media (prefers-reduced-motion: reduce) {
-  .scene1-visual::before, .scene1-mark, .decline-line, .decline-dot, .decline-ping,
+  .scene1-visual::before, .scene1-mark, .decline-line, .decline-dot,
   .decline-area, .decline-guide, .decline-start-dot, .decline-start-line,
   .how-flow-step, .how-tier, .how-outcome { animation: none; opacity: 1; }
 }
@@ -1099,7 +1097,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
             </div>
             <div class="scene1-visual" aria-hidden="true">
               <div class="decline-chart">
-                <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="declineAreaGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stop-color="var(--cg-accent)" stop-opacity="0.32"></stop>
@@ -1114,23 +1112,22 @@ svg.pipe { width: 100%; height: auto; display: block; }
                     </filter>
                   </defs>
 
-                  <path class="decline-area" d="M24,30 L110,30 L200,58 L288,92 L288,132 L24,132 Z" fill="url(#declineAreaGrad)"></path>
+                  <path class="decline-area" d="M24,26 L108,26 L200,100 L288,168 L288,180 L24,180 Z" fill="url(#declineAreaGrad)"></path>
 
-                  <line class="decline-guide" x1="24" y1="30" x2="24" y2="132" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
-                  <line class="decline-guide" x1="110" y1="30" x2="110" y2="132" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
-                  <line class="decline-guide" x1="200" y1="58" x2="200" y2="132" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
-                  <line class="decline-guide" x1="288" y1="92" x2="288" y2="132" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
+                  <line class="decline-guide" x1="24" y1="26" x2="24" y2="180" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
+                  <line class="decline-guide" x1="108" y1="26" x2="108" y2="180" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
+                  <line class="decline-guide" x1="200" y1="100" x2="200" y2="180" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
+                  <line class="decline-guide" x1="288" y1="168" x2="288" y2="180" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
 
-                  <line class="decline-start-line" x1="24" y1="4" x2="24" y2="30" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="2 3"></line>
-                  <circle class="decline-start-dot" cx="24" cy="30" r="4" fill="var(--cg-accent)" filter="url(#declineGlow)"></circle>
+                  <line class="decline-start-line" x1="24" y1="4" x2="24" y2="26" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="2 3"></line>
+                  <circle class="decline-start-dot" cx="24" cy="26" r="4" fill="var(--cg-accent)" filter="url(#declineGlow)"></circle>
 
-                  <path class="decline-line" d="M24,30 L110,30 L200,58 L288,92" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#declineGlow)"></path>
+                  <path class="decline-line" d="M24,26 L108,26 L200,100 L288,168" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#declineGlow)"></path>
 
-                  <circle class="decline-dot" cx="288" cy="92" r="5" fill="#e0708a" filter="url(#declineGlow)"></circle>
-                  <circle class="decline-ping" cx="288" cy="92" r="5" fill="none" stroke="#e0708a" stroke-width="2"></circle>
+                  <circle class="decline-dot" cx="24" cy="26" r="5" fill="var(--text-3)" filter="url(#declineGlow)"></circle>
 
-                  <text x="24" y="20" class="decline-label">MOBILITY</text>
-                  <text x="288" y="126" text-anchor="end" class="decline-label decline-label--fall">THE FALL</text>
+                  <text x="29" y="16" class="decline-label">MOBILITY</text>
+                  <text x="125" y="16" class="decline-label decline-label--fall">THE FALL</text>
                 </svg>
               </div>
             </div>
@@ -1447,6 +1444,104 @@ svg.pipe { width: 100%; height: auto; display: block; }
   var nextBtn    = section.querySelector('.how-next');
   var total      = scenes.length;
   var current    = 1;
+  var declineAnimPlayed = false;
+
+  function playDeclineDot() {
+    if (declineAnimPlayed) return;
+    declineAnimPlayed = true;
+    var dot = document.querySelector('.decline-dot');
+    if (!dot) return;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      dot.setAttribute('cx', '108');
+      dot.setAttribute('cy', '26');
+      return;
+    }
+
+    var downPoints = [[24, 26], [108, 26], [200, 100], [288, 168]];
+    var restPoint = [108, 26];
+    var downDuration = 1600;
+    var fadeDuration = 150;
+
+    function polylineLength(points) {
+      var total = 0;
+      for (var i = 1; i < points.length; i++) {
+        var dx = points[i][0] - points[i - 1][0], dy = points[i][1] - points[i - 1][1];
+        total += Math.sqrt(dx * dx + dy * dy);
+      }
+      return total;
+    }
+
+    function moveAlong(points, duration, onDone) {
+      var dists = [0];
+      for (var i = 1; i < points.length; i++) {
+        var dx = points[i][0] - points[i - 1][0], dy = points[i][1] - points[i - 1][1];
+        dists.push(dists[i - 1] + Math.sqrt(dx * dx + dy * dy));
+      }
+      var total = dists[dists.length - 1];
+      var start = null;
+      function frame(ts) {
+        if (!start) start = ts;
+        var t = Math.min((ts - start) / duration, 1);
+        var target = t * total;
+        var seg = 0;
+        while (seg < dists.length - 2 && target > dists[seg + 1]) seg++;
+        var segLen = dists[seg + 1] - dists[seg];
+        var segT = segLen ? (target - dists[seg]) / segLen : 0;
+        var x = points[seg][0] + (points[seg + 1][0] - points[seg][0]) * segT;
+        var y = points[seg][1] + (points[seg + 1][1] - points[seg][1]) * segT;
+        dot.setAttribute('cx', x);
+        dot.setAttribute('cy', y);
+        if (t < 1) requestAnimationFrame(frame);
+        else if (onDone) onDone();
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function continueAndFadeOut(duration, onDone) {
+      var last = downPoints[downPoints.length - 1];
+      var prev = downPoints[downPoints.length - 2];
+      var segDx = last[0] - prev[0], segDy = last[1] - prev[1];
+      var segLen = Math.sqrt(segDx * segDx + segDy * segDy);
+      var dirX = segDx / segLen, dirY = segDy / segLen;
+      var speed = polylineLength(downPoints) / downDuration; // units per ms, same pace as the descent
+      var start = null;
+      function frame(ts) {
+        if (!start) start = ts;
+        var elapsed = ts - start;
+        var t = Math.min(elapsed / duration, 1);
+        var dist = speed * elapsed;
+        dot.setAttribute('cx', last[0] + dirX * dist);
+        dot.setAttribute('cy', last[1] + dirY * dist);
+        dot.style.opacity = 1 - t;
+        if (t < 1) requestAnimationFrame(frame);
+        else if (onDone) onDone();
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function fadeOpacity(from, to, duration, onDone) {
+      var start = null;
+      function frame(ts) {
+        if (!start) start = ts;
+        var t = Math.min((ts - start) / duration, 1);
+        dot.style.opacity = from + (to - from) * t;
+        if (t < 1) requestAnimationFrame(frame);
+        else if (onDone) onDone();
+      }
+      requestAnimationFrame(frame);
+    }
+
+    setTimeout(function () {
+      moveAlong(downPoints, downDuration, function () {
+        continueAndFadeOut(fadeDuration, function () {
+          dot.setAttribute('cx', restPoint[0]);
+          dot.setAttribute('cy', restPoint[1]);
+          fadeOpacity(0, 1, 150);
+        });
+      });
+    }, 600);
+  }
 
   function syncStageHeight() {
     if (!stage) return;
@@ -1481,6 +1576,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
     if (nextBtn) nextBtn.disabled = n === total;
 
     if (n === 4) startPipe(); else stopPipe();
+    if (n === 2) playDeclineDot();
   }
 
   /* ── Live pipeline diagram (scene 04) ── */
