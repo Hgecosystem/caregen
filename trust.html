@@ -452,7 +452,31 @@ main { position: relative; z-index: 1; }
 .how-body { font-size: 15.5px; line-height: 1.75; color: var(--text-2); max-width: 640px; margin-bottom: 24px; }
 
 .how-chips { display: flex; flex-direction: column; gap: 10px; max-width: 640px; margin-bottom: 8px; }
-.how-chip { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 18px; font-size: 14px; color: var(--text-1); }
+.how-chip {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(5,0,37,0.42); border: 1px solid rgba(0,0,0,0.35); border-radius: 14px;
+  padding: 14px 18px; font-size: 14px; color: var(--text-1);
+  box-shadow: 0 8px 20px rgba(5,0,37,0.25);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.how-chip::after {
+  content: '';
+  position: absolute; top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 65%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+.how-chip:hover::after { left: 125%; }
+.how-chip:hover {
+  border-color: rgba(245,181,51,0.35);
+  box-shadow: 0 8px 20px rgba(5,0,37,0.25), 0 0 30px rgba(245,181,51,0.2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .how-chip::after { display: none; }
+}
 .how-chip svg { flex-shrink: 0; }
 
 .scene1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; transform: translateY(-20px); }
@@ -522,13 +546,13 @@ main { position: relative; z-index: 1; }
 }
 .how-nav-btn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
 .how-nav-btn:disabled { opacity: 0.3; cursor: default; }
-.how-hint { font-size: 12px; color: var(--text-3); }
+.how-hint { font-size: 12px; color: var(--cg-accent); }
 
 /* ── Live pipeline diagram (scene 04: The New Way) ── */
 .pipe-stage { --pipe-predict: var(--cg-dominant); --pipe-detect: var(--cg-accent); --pipe-act: #e0708a; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; margin-top: 4px; margin-bottom: 8px; }
-.pipe-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 15px 15px 9px; }
+.pipe-card { background: rgba(5,0,37,0.42); border: 1px solid rgba(0,0,0,0.35); border-radius: 20px; padding: 15px 15px 9px; box-shadow: 0 8px 20px rgba(5,0,37,0.25); }
 .pipe-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-.pipe-live { font-size: 11px; color: var(--pipe-predict); display: flex; align-items: center; gap: 8px; letter-spacing: 0.04em; }
+.pipe-live { font-size: 11px; color: #fff; display: flex; align-items: center; gap: 8px; letter-spacing: 0.04em; margin-left: 20px; }
 .pipe-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--pipe-predict); animation: pipe-blink 1.4s infinite; }
 @keyframes pipe-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 .pipe-state { font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-1); padding: 5px 13px; border-radius: 999px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); transition: 0.4s; }
@@ -848,13 +872,19 @@ svg.pipe { width: 100%; height: auto; display: block; }
 @keyframes scene1-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 .scene1-mark { animation: scene1-float 5s ease-in-out infinite; }
 
-/* Scene 2 — decline line draws in, then pulses at the fall point */
-.decline-chart { margin: 26px 0 4px; max-width: 420px; }
-.decline-line { stroke-dasharray: 340; stroke-dashoffset: 340; animation: decline-draw 1.8s ease-out forwards; animation-delay: 0.2s; }
+/* Scene 2 — glowing stepped decline chart, draws in then pulses at the fall point */
+.decline-chart { width: 100%; max-width: 320px; position: relative; z-index: 1; }
+.decline-chart svg { display: block; width: 100%; height: auto; }
+.decline-area { opacity: 0; animation: decline-fade-in 0.8s ease-out forwards; animation-delay: 1.6s; }
+.decline-guide { opacity: 0; animation: decline-fade-in 0.8s ease-out forwards; animation-delay: 1.8s; }
+@keyframes decline-fade-in { to { opacity: 1; } }
+.decline-start-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 0s; }
+.decline-start-line { opacity: 0; animation: decline-fade-in 0.6s ease-out forwards; animation-delay: 0.1s; }
+.decline-line { stroke-dasharray: 280; stroke-dashoffset: 280; animation: decline-draw 1.6s ease-out forwards; animation-delay: 0.3s; }
 @keyframes decline-draw { to { stroke-dashoffset: 0; } }
-.decline-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 2s; }
+.decline-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 1.9s; }
 @keyframes decline-dot-in { to { opacity: 1; } }
-.decline-ping { opacity: 0; animation: pipe-ping 1.8s ease-out infinite; animation-delay: 2.2s; }
+.decline-ping { opacity: 0; animation: pipe-ping 1.8s ease-out infinite; animation-delay: 2.1s; }
 .decline-label { font-size: 8.5px; letter-spacing: 0.06em; fill: var(--text-3); }
 .decline-label--fall { fill: #e0708a; font-weight: 700; }
 
@@ -888,6 +918,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   .scene1-visual::before, .scene1-mark, .decline-line, .decline-dot, .decline-ping,
+  .decline-area, .decline-guide, .decline-start-dot, .decline-start-line,
   .how-flow-step, .how-tier, .how-outcome { animation: none; opacity: 1; }
 }
 
@@ -917,8 +948,8 @@ svg.pipe { width: 100%; height: auto; display: block; }
   .form-row { flex-direction: column; gap: 0; }
 }
 
-/* ═══ Scene 1: vertically center the text + animation block ═══ */
-.how-scene[data-scene="1"].is-active {
+/* ═══ All scenes: vertically center content within the stage ═══ */
+.how-scene.is-active {
   display: flex;
   flex-direction: column;
   justify-content: center;
