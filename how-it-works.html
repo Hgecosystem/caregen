@@ -325,7 +325,7 @@ main { position: relative; z-index: 1; }
   background: linear-gradient(135deg, var(--cg-dominant), var(--cg-mid));
 }
 .pda-title { font-size: 19px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 4px; }
-.pda-tag { font-size: 12px; font-weight: 600; color: var(--cg-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+.pda-tag { font-size: 13px; font-weight: 600; color: var(--cg-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
 .pda-body { font-size: 15px; line-height: 1.7; color: var(--text-2); }
 .pda-arrow {
   display: none; position: absolute; top: 50%; right: -22px; transform: translateY(-50%);
@@ -417,7 +417,7 @@ main { position: relative; z-index: 1; }
   width: 32px; height: 32px; border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.22);
   display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 700; color: var(--text-2);
+  font-size: 13px; font-weight: 700; color: var(--text-2);
   transition: all 0.25s ease;
 }
 .how-step-label {
@@ -460,22 +460,9 @@ main { position: relative; z-index: 1; }
   box-shadow: 0 8px 20px rgba(5,0,37,0.25);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.how-chip::after {
-  content: '';
-  position: absolute; top: 0; left: -75%;
-  width: 50%; height: 100%;
-  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 65%, transparent 100%);
-  transform: skewX(-20deg);
-  transition: left 0.75s ease;
-  pointer-events: none;
-}
-.how-chip:hover::after { left: 125%; }
 .how-chip:hover {
-  border-color: rgba(245,181,51,0.35);
-  box-shadow: 0 8px 20px rgba(5,0,37,0.25), 0 0 30px rgba(245,181,51,0.2);
-}
-@media (prefers-reduced-motion: reduce) {
-  .how-chip::after { display: none; }
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 8px 20px rgba(5,0,37,0.25), 0 0 26px rgba(245,181,51,0.28);
 }
 .how-chip svg { flex-shrink: 0; }
 
@@ -515,6 +502,7 @@ main { position: relative; z-index: 1; }
   .scene1-visual { order: -1; margin-bottom: 12px; }
   .scene1-mark { max-width: 220px; }
   .rising-bar { max-width: 220px; }
+  .phase-loop { max-width: 220px; }
 }
 
 .how-flow { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -546,7 +534,7 @@ main { position: relative; z-index: 1; }
 }
 .how-nav-btn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
 .how-nav-btn:disabled { opacity: 0.3; cursor: default; }
-.how-hint { font-size: 12px; color: var(--cg-accent); }
+.how-hint { font-size: 13px; color: var(--cg-accent); }
 
 /* ── Live pipeline diagram (scene 04: The New Way) ── */
 .pipe-stage { --pipe-predict: var(--cg-dominant); --pipe-detect: var(--cg-accent); --pipe-act: #e0708a; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; margin-top: 4px; margin-bottom: 8px; }
@@ -588,11 +576,11 @@ svg.pipe { width: 100%; height: auto; display: block; }
 
 .rail-steps { display: flex; flex-direction: column; gap: 8px; }
 .rstep { display: flex; gap: 13px; padding: 12px 15px; border-radius: 13px; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03); transition: 0.35s; cursor: pointer; }
-.rstep:hover { background: rgba(255,255,255,0.06); }
+.rstep:hover { background: rgba(255,255,255,0.06); border-color: rgba(245,181,51,0.55); box-shadow: 0 0 26px rgba(245,181,51,0.28); }
 .rstep.on { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); transform: translateX(4px); }
 .rstep .ix { font-size: 11px; color: var(--text-3); width: 18px; flex: none; padding-top: 2px; }
 .rstep h4 { font-size: 14.5px; font-weight: 700; color: var(--text-1); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.rstep p { font-size: 12px; color: var(--text-2); margin-top: 4px; line-height: 1.5; }
+.rstep p { font-size: 13px; color: var(--text-2); margin-top: 4px; line-height: 1.5; }
 .rchip { font-size: 8.5px; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
 .rchip.p { background: rgba(97,44,173,0.22); color: #b79bde; }
 .rchip.d { background: rgba(245,181,51,0.18); color: var(--cg-accent); }
@@ -738,7 +726,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 }
 .footer-links a { font-size: 13px; font-weight: 500; color: var(--text-2); text-decoration: none; padding: 4px 10px; transition: color 0.18s; }
 .footer-links a:hover { color: var(--text-1); }
-.footer-copy { text-align: center; font-size: 12px; color: var(--text-3); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin: 0; }
+.footer-copy { text-align: center; font-size: 13px; color: var(--text-3); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin: 0; }
 
 @media (max-width: 600px) {
   .site-footer { margin: 20px 16px 20px; padding: 32px 6% 24px; }
@@ -837,16 +825,16 @@ svg.pipe { width: 100%; height: auto; display: block; }
 /* ═══ Card hover interaction (Capabilities / Packages / Trust / Tiers) ═══ */
 .cap-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.26);
-  box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(151,90,214,0.38);
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28);
 }
 .pda-step--accent:hover {
-  border-color: rgba(183,155,222,0.7);
-  box-shadow: 0 18px 40px rgba(97,44,173,0.32), 0 0 55px rgba(183,155,222,0.55);
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 18px 40px rgba(97,44,173,0.32), 0 0 26px rgba(245,181,51,0.28);
 }
 .cap-panel--light .cap-card:hover {
-  border-color: rgba(97,44,173,0.35);
-  box-shadow: 0 18px 40px rgba(5,0,37,0.28), 0 0 46px rgba(245,181,51,0.35);
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 18px 40px rgba(5,0,37,0.28), 0 0 26px rgba(245,181,51,0.28);
 }
 @media (prefers-reduced-motion: reduce) {
   .cap-card:hover { transform: none; }
@@ -858,11 +846,11 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .pkg-stroke-3 { border-color: rgba(97,44,173,0.85); }
 .pkg-stroke-4 { border-color: rgba(154,90,188,0.75); }
 .pkg-stroke-5 { border-color: rgba(245,181,51,0.65); }
-.pkg-stroke-1:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(51,23,107,0.55); border-color: rgba(51,23,107,1); }
-.pkg-stroke-2:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(74,33,140,0.55); border-color: rgba(74,33,140,1); }
-.pkg-stroke-3:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(97,44,173,0.55); border-color: rgba(97,44,173,1); }
-.pkg-stroke-4:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(154,90,188,0.6); border-color: rgba(154,90,188,1); }
-.pkg-stroke-5:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(245,181,51,0.6); border-color: rgba(245,181,51,1); }
+.pkg-stroke-1:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-2:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-3:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-4:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-5:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
 
 /* ═══ How It Works: extra scene animations ═══════════════════════ */
 
@@ -886,16 +874,10 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .decline-label { font-size: 8.5px; letter-spacing: 0.06em; fill: var(--text-3); }
 .decline-label--fall { fill: var(--text-3); }
 
-.timeline-chart { width: 100%; max-width: 420px; position: relative; z-index: 1; }
-.timeline-chart svg { display: block; width: 100%; height: auto; }
-.timeline-guide { opacity: 0; animation: decline-fade-in 0.5s ease-out forwards; animation-delay: 0s; }
-.timeline-line { stroke-dasharray: 270; stroke-dashoffset: 270; animation: decline-draw 0.6s ease-out forwards; animation-delay: 0s; }
-.timeline-dot { opacity: 0; animation: decline-dot-in 0.4s ease-out forwards; animation-delay: 0s; }
-.timeline-label { font-size: 8.5px; letter-spacing: 0.06em; fill: var(--text-3); }
-.timeline-sublabel { font-size: 7px; letter-spacing: 0.04em; fill: var(--text-3); opacity: 0.7; }
-.timeline-label--late { fill: #e0708a; font-weight: 700; }
-.timeline-ping { fill: none; stroke: #e0708a; stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: pipe-ping 1.6s ease-out infinite; animation-delay: 0.6s; }
-
+.phase-loop { width: 100%; max-width: 400px; margin: 0 auto; }
+.phase-loop svg { width: 100%; height: auto; display: block; }
+.loop-spin { transform-origin: 100px 100px; animation: loop-rotate 6s linear infinite; }
+@keyframes loop-rotate { to { transform: rotate(360deg); } }
 /* Scene 3 — sequential relay highlight across the 3-step flow */
 @keyframes flow-relay {
   0%, 22%, 100% { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); box-shadow: none; }
@@ -922,14 +904,13 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .how-outcome:nth-child(1) { animation-delay: 0.05s; }
 .how-outcome:nth-child(2) { animation-delay: 0.18s; }
 .how-outcome:nth-child(3) { animation-delay: 0.31s; }
-.how-outcome:hover { transform: translateY(-4px); border-color: rgba(245,181,51,0.4); box-shadow: 0 14px 34px rgba(5,0,37,0.3), 0 0 40px rgba(245,181,51,0.25); }
+.how-outcome:hover { transform: translateY(-4px); border-color: rgba(245,181,51,0.55); box-shadow: 0 14px 34px rgba(5,0,37,0.3), 0 0 26px rgba(245,181,51,0.28); }
 
 @media (prefers-reduced-motion: reduce) {
   .scene1-visual::before, .scene1-mark, .decline-line, .decline-dot,
   .decline-area, .decline-guide, .decline-start-dot, .decline-start-line,
   .how-flow-step, .how-tier, .how-outcome,
-  .timeline-line, .timeline-dot, .timeline-guide { animation: none; opacity: 1; }
-  .timeline-ping { animation: none; opacity: 0; }
+  .loop-spin { animation: none; }
 }
 
 /* ═══ Contact page: discovery call form ═══════════════════════════ */
@@ -1152,45 +1133,32 @@ svg.pipe { width: 100%; height: auto; display: block; }
               <p class="how-eyebrow">Business As Usual</p>
               <h3 class="how-heading">By the time it's written up, the moment to act has already passed.</h3>
               <p class="how-body">It's the same loop in most facilities: something happens, the team documents it, and it's reviewed weeks or months later. The risk was sitting there long before anyone could act on it.</p>
-              <div class="how-flow">
-                <span class="how-flow-step">01 Event occurs</span>
-                <span class="how-flow-arrow" aria-hidden="true">→</span>
-                <span class="how-flow-step">02 Documented</span>
-                <span class="how-flow-arrow" aria-hidden="true">→</span>
-                <span class="how-flow-step">03 Reviewed later</span>
+
+              <div class="rail-steps">
+                <div class="rstep"><span class="ix">01</span><div><h4>Event occurs</h4><p>A fall, a change in condition, a missed cue. It happens on the floor first, with no one flagged in real time.</p></div></div>
+                <div class="rstep"><span class="ix">02</span><div><h4>Documented</h4><p>Staff log it when they get a moment. It's added to the file for someone else to read later.</p></div></div>
+                <div class="rstep"><span class="ix">03</span><div><h4>Reviewed, too late</h4><p>Weeks or months on, it surfaces in a review, long after anyone could have acted on it.</p></div></div>
               </div>
-              <p class="how-flow-tag">Lag measured in months, not minutes.</p>
             </div>
+
             <div class="scene1-visual" aria-hidden="true">
-              <div class="timeline-chart">
-                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <div class="phase-loop">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <filter id="timelineGlow" x="-60%" y="-60%" width="220%" height="220%">
-                      <feGaussianBlur stdDeviation="4" result="blur"></feGaussianBlur>
+                    <filter id="loopGlow" x="-60%" y="-60%" width="220%" height="220%">
+                      <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
                       <feMerge>
                         <feMergeNode in="blur"></feMergeNode>
                         <feMergeNode in="SourceGraphic"></feMergeNode>
                       </feMerge>
                     </filter>
                   </defs>
-
-                  <line class="timeline-guide" x1="20" y1="100" x2="300" y2="100" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2 3"></line>
-
-                  <path class="timeline-line" d="M45,100 L140,100 L275,100" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#timelineGlow)"></path>
-
-                  <circle class="timeline-dot" cx="45" cy="100" r="5" fill="var(--cg-accent)" filter="url(#timelineGlow)"></circle>
-                  <circle class="timeline-dot" cx="140" cy="100" r="5" fill="var(--text-3)" filter="url(#timelineGlow)"></circle>
-                  <circle class="timeline-dot" cx="275" cy="100" r="5" fill="#e0708a" filter="url(#timelineGlow)"></circle>
-                  <circle class="timeline-ping" cx="275" cy="100" r="5"></circle>
-
-                  <text x="45" y="76" text-anchor="middle" class="timeline-label">EVENT OCCURS</text>
-                  <text x="45" y="122" text-anchor="middle" class="timeline-sublabel">T+0</text>
-
-                  <text x="140" y="76" text-anchor="middle" class="timeline-label">DOCUMENTED</text>
-                  <text x="140" y="122" text-anchor="middle" class="timeline-sublabel">T+2H</text>
-
-                  <text x="275" y="76" text-anchor="middle" class="timeline-label">REVIEWED</text>
-                  <text x="275" y="122" text-anchor="middle" class="timeline-label timeline-label--late">TOO LATE</text>
+                  <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(245,181,51,0.12)" stroke-width="2"></circle>
+                  <g class="loop-spin">
+                    <circle cx="100" cy="100" r="86" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 470" filter="url(#loopGlow)"></circle>
+                    <circle cx="100" cy="100" r="86" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 470" stroke-dashoffset="-180" filter="url(#loopGlow)" opacity="0.7"></circle>
+                    <circle cx="100" cy="100" r="86" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 470" stroke-dashoffset="-360" filter="url(#loopGlow)" opacity="0.4"></circle>
+                  </g>
                 </svg>
               </div>
             </div>
@@ -1199,7 +1167,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 
         <div class="how-scene" data-scene="4">
           <p class="how-eyebrow">The Shift</p>
-          <h3 class="how-heading">CareGen Intelligence. Getting ahead of the risk.</h3>
+          <h3 class="how-heading">CareGen Intelligence.<br>Getting ahead of the risk.</h3>
 
           <div class="pipe-stage">
             <div class="pipe-card">

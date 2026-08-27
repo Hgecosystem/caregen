@@ -325,7 +325,7 @@ main { position: relative; z-index: 1; }
   background: linear-gradient(135deg, var(--cg-dominant), var(--cg-mid));
 }
 .pda-title { font-size: 19px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 4px; }
-.pda-tag { font-size: 12px; font-weight: 600; color: var(--cg-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+.pda-tag { font-size: 13px; font-weight: 600; color: var(--cg-accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
 .pda-body { font-size: 15px; line-height: 1.7; color: var(--text-2); }
 .pda-arrow {
   display: none; position: absolute; top: 50%; right: -22px; transform: translateY(-50%);
@@ -417,7 +417,7 @@ main { position: relative; z-index: 1; }
   width: 32px; height: 32px; border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.22);
   display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 700; color: var(--text-2);
+  font-size: 13px; font-weight: 700; color: var(--text-2);
   transition: all 0.25s ease;
 }
 .how-step-label {
@@ -460,22 +460,9 @@ main { position: relative; z-index: 1; }
   box-shadow: 0 8px 20px rgba(5,0,37,0.25);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.how-chip::after {
-  content: '';
-  position: absolute; top: 0; left: -75%;
-  width: 50%; height: 100%;
-  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 65%, transparent 100%);
-  transform: skewX(-20deg);
-  transition: left 0.75s ease;
-  pointer-events: none;
-}
-.how-chip:hover::after { left: 125%; }
 .how-chip:hover {
-  border-color: rgba(245,181,51,0.35);
-  box-shadow: 0 8px 20px rgba(5,0,37,0.25), 0 0 30px rgba(245,181,51,0.2);
-}
-@media (prefers-reduced-motion: reduce) {
-  .how-chip::after { display: none; }
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 8px 20px rgba(5,0,37,0.25), 0 0 26px rgba(245,181,51,0.28);
 }
 .how-chip svg { flex-shrink: 0; }
 
@@ -494,7 +481,7 @@ main { position: relative; z-index: 1; }
   50% { transform: translateY(20px); }
 }
 .rising-bar-label {
-  font-family: var(--font); font-size: 3.4px; font-weight: 400; letter-spacing: 0.4px;
+  font-family: var(--font); font-size: 3.19px; font-weight: 400; letter-spacing: 0.4px;
   fill: #fff;
   animation: rising-bar-oscillate 4.5s ease-in-out infinite, rising-bar-label-fade 4.5s ease-in-out infinite;
 }
@@ -546,7 +533,7 @@ main { position: relative; z-index: 1; }
 }
 .how-nav-btn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
 .how-nav-btn:disabled { opacity: 0.3; cursor: default; }
-.how-hint { font-size: 12px; color: var(--cg-accent); }
+.how-hint { font-size: 13px; color: var(--cg-accent); }
 
 /* ── Live pipeline diagram (scene 04: The New Way) ── */
 .pipe-stage { --pipe-predict: var(--cg-dominant); --pipe-detect: var(--cg-accent); --pipe-act: #e0708a; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; margin-top: 4px; margin-bottom: 8px; }
@@ -588,11 +575,11 @@ svg.pipe { width: 100%; height: auto; display: block; }
 
 .rail-steps { display: flex; flex-direction: column; gap: 8px; }
 .rstep { display: flex; gap: 13px; padding: 12px 15px; border-radius: 13px; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03); transition: 0.35s; cursor: pointer; }
-.rstep:hover { background: rgba(255,255,255,0.06); }
+.rstep:hover { background: rgba(255,255,255,0.06); border-color: rgba(245,181,51,0.55); box-shadow: 0 0 26px rgba(245,181,51,0.28); }
 .rstep.on { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); transform: translateX(4px); }
 .rstep .ix { font-size: 11px; color: var(--text-3); width: 18px; flex: none; padding-top: 2px; }
 .rstep h4 { font-size: 14.5px; font-weight: 700; color: var(--text-1); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.rstep p { font-size: 12px; color: var(--text-2); margin-top: 4px; line-height: 1.5; }
+.rstep p { font-size: 13px; color: var(--text-2); margin-top: 4px; line-height: 1.5; }
 .rchip { font-size: 8.5px; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
 .rchip.p { background: rgba(97,44,173,0.22); color: #b79bde; }
 .rchip.d { background: rgba(245,181,51,0.18); color: var(--cg-accent); }
@@ -738,7 +725,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 }
 .footer-links a { font-size: 13px; font-weight: 500; color: var(--text-2); text-decoration: none; padding: 4px 10px; transition: color 0.18s; }
 .footer-links a:hover { color: var(--text-1); }
-.footer-copy { text-align: center; font-size: 12px; color: var(--text-3); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin: 0; }
+.footer-copy { text-align: center; font-size: 13px; color: var(--text-3); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin: 0; }
 
 @media (max-width: 600px) {
   .site-footer { margin: 20px 16px 20px; padding: 32px 6% 24px; }
@@ -837,16 +824,16 @@ svg.pipe { width: 100%; height: auto; display: block; }
 /* ═══ Card hover interaction (Capabilities / Packages / Trust / Tiers) ═══ */
 .cap-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.26);
-  box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(151,90,214,0.38);
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28);
 }
 .pda-step--accent:hover {
-  border-color: rgba(183,155,222,0.7);
-  box-shadow: 0 18px 40px rgba(97,44,173,0.32), 0 0 55px rgba(183,155,222,0.55);
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 18px 40px rgba(97,44,173,0.32), 0 0 26px rgba(245,181,51,0.28);
 }
 .cap-panel--light .cap-card:hover {
-  border-color: rgba(97,44,173,0.35);
-  box-shadow: 0 18px 40px rgba(5,0,37,0.28), 0 0 46px rgba(245,181,51,0.35);
+  border-color: rgba(245,181,51,0.55);
+  box-shadow: 0 18px 40px rgba(5,0,37,0.28), 0 0 26px rgba(245,181,51,0.28);
 }
 @media (prefers-reduced-motion: reduce) {
   .cap-card:hover { transform: none; }
@@ -858,11 +845,11 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .pkg-stroke-3 { border-color: rgba(97,44,173,0.85); }
 .pkg-stroke-4 { border-color: rgba(154,90,188,0.75); }
 .pkg-stroke-5 { border-color: rgba(245,181,51,0.65); }
-.pkg-stroke-1:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(51,23,107,0.55); border-color: rgba(51,23,107,1); }
-.pkg-stroke-2:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(74,33,140,0.55); border-color: rgba(74,33,140,1); }
-.pkg-stroke-3:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(97,44,173,0.55); border-color: rgba(97,44,173,1); }
-.pkg-stroke-4:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(154,90,188,0.6); border-color: rgba(154,90,188,1); }
-.pkg-stroke-5:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 46px rgba(245,181,51,0.6); border-color: rgba(245,181,51,1); }
+.pkg-stroke-1:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-2:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-3:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-4:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
+.pkg-stroke-5:hover { box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(245,181,51,0.28); border-color: rgba(245,181,51,0.55); }
 
 /* ═══ How It Works: extra scene animations ═══════════════════════ */
 
@@ -914,7 +901,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .how-outcome:nth-child(1) { animation-delay: 0.05s; }
 .how-outcome:nth-child(2) { animation-delay: 0.18s; }
 .how-outcome:nth-child(3) { animation-delay: 0.31s; }
-.how-outcome:hover { transform: translateY(-4px); border-color: rgba(245,181,51,0.4); box-shadow: 0 14px 34px rgba(5,0,37,0.3), 0 0 40px rgba(245,181,51,0.25); }
+.how-outcome:hover { transform: translateY(-4px); border-color: rgba(245,181,51,0.55); box-shadow: 0 14px 34px rgba(5,0,37,0.3), 0 0 26px rgba(245,181,51,0.28); }
 
 @media (prefers-reduced-motion: reduce) {
   .scene1-visual::before, .scene1-mark, .decline-line, .decline-dot, .decline-ping,
