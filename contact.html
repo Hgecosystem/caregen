@@ -536,7 +536,7 @@ main { position: relative; z-index: 1; }
 .how-hint { font-size: 13px; color: var(--cg-accent); }
 
 /* ── Live pipeline diagram (scene 04: The New Way) ── */
-.pipe-stage { --pipe-predict: var(--cg-dominant); --pipe-detect: var(--cg-accent); --pipe-act: #e0708a; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; margin-top: 4px; margin-bottom: 8px; }
+.pipe-stage { --pipe-predict: var(--cg-dominant); --pipe-detect: var(--cg-accent); --pipe-act: #FF616B; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; margin-top: 4px; margin-bottom: 8px; }
 .pipe-card { background: rgba(5,0,37,0.42); border: 1px solid rgba(0,0,0,0.35); border-radius: 20px; padding: 15px 15px 9px; box-shadow: 0 8px 20px rgba(5,0,37,0.25); }
 .pipe-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
 .pipe-live { font-size: 11px; color: #fff; display: flex; align-items: center; gap: 8px; letter-spacing: 0.04em; margin-left: 20px; }
@@ -583,7 +583,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .rchip { font-size: 8.5px; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
 .rchip.p { background: rgba(97,44,173,0.22); color: #b79bde; }
 .rchip.d { background: rgba(245,181,51,0.18); color: var(--cg-accent); }
-.rchip.a { background: rgba(224,112,138,0.18); color: #e0708a; }
+.rchip.a { background: rgba(255,97,107,0.18); color: #FF616B; }
 .rstep.on.rs0 { box-shadow: inset 3px 0 0 var(--pipe-predict); }
 .rstep.on.rs1 { box-shadow: inset 3px 0 0 var(--pipe-detect); }
 .rstep.on.rs2 { box-shadow: inset 3px 0 0 var(--pipe-act); }
@@ -873,7 +873,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 @keyframes decline-dot-in { to { opacity: 1; } }
 .decline-ping { opacity: 0; animation: pipe-ping 1.8s ease-out infinite; animation-delay: 2.1s; }
 .decline-label { font-size: 8.5px; letter-spacing: 0.06em; fill: var(--text-3); }
-.decline-label--fall { fill: #e0708a; font-weight: 700; }
+.decline-label--fall { fill: #FF616B; font-weight: 700; }
 
 /* Scene 3 — sequential relay highlight across the 3-step flow */
 @keyframes flow-relay {
