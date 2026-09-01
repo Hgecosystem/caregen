@@ -877,6 +877,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .phase-loop { width: 100%; max-width: 400px; margin: 0 auto; }
 .phase-loop svg { width: 100%; height: auto; display: block; }
 .loop-spin { transform-origin: 100px 100px; animation: loop-rotate 6s linear infinite; }
+.loop-label { font-family: var(--font); font-size: 5.6px; letter-spacing: 0.06em; fill: var(--text-3); }
 @keyframes loop-rotate { to { transform: rotate(360deg); } }
 /* Scene 3 — sequential relay highlight across the 3-step flow */
 @keyframes flow-relay {
@@ -1155,9 +1156,15 @@ svg.pipe { width: 100%; height: auto; display: block; }
                   </defs>
                   <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(245,181,51,0.12)" stroke-width="2"></circle>
                   <g class="loop-spin">
-                    <circle cx="100" cy="100" r="86" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 470" filter="url(#loopGlow)"></circle>
-                    <circle cx="100" cy="100" r="86" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 470" stroke-dashoffset="-180" filter="url(#loopGlow)" opacity="0.7"></circle>
-                    <circle cx="100" cy="100" r="86" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 470" stroke-dashoffset="-360" filter="url(#loopGlow)" opacity="0.4"></circle>
+                    <path id="loopArc1" d="M186,100 A86,86 0 0 1 159.09,162.49" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" filter="url(#loopGlow)"></path>
+                    <path id="loopArc2" d="M57,174.48 A86,86 0 0 1 16.37,120.07" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" filter="url(#loopGlow)"></path>
+                    <path id="loopArc3" d="M57,25.52 A86,86 0 0 1 124.49,17.56" fill="none" stroke="var(--cg-accent)" stroke-width="2.5" stroke-linecap="round" filter="url(#loopGlow)"></path>
+                    <path id="loopLabelArc1" d="M196,100 A96,96 0 0 1 165.96,169.75" fill="none"></path>
+                    <path id="loopLabelArc2" d="M52,183.14 A96,96 0 0 1 6.65,122.41" fill="none"></path>
+                    <path id="loopLabelArc3" d="M52,16.86 A96,96 0 0 1 127.34,8.03" fill="none"></path>
+                    <text class="loop-label"><textPath href="#loopLabelArc1" startOffset="2">EVENT OCCURS</textPath></text>
+                    <text class="loop-label"><textPath href="#loopLabelArc2" startOffset="2">DOCUMENTED</textPath></text>
+                    <text class="loop-label"><textPath href="#loopLabelArc3" startOffset="2">REVIEWED, TOO LATE</textPath></text>
                   </g>
                 </svg>
               </div>
