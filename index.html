@@ -298,12 +298,16 @@ main { position: relative; z-index: 1; }
 /* ═══ CAPABILITIES ═══════════════════════════════════════════════ */
 .cap-section { margin: 40px 2.5vw 0; }
 .cap-panel {
+  position: relative; overflow: hidden;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: var(--radius-card);
   padding: 80px 7% 90px;
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
+.cap-particles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.6; pointer-events: none; }
+.cap-content { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .cap-particles { display: none; } }
 .cap-header { text-align: center; max-width: 720px; margin: 0 auto 56px; }
 .cap-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -321,23 +325,40 @@ main { position: relative; z-index: 1; }
 /* Four Layers of Value */
 .layer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 0 0 40px; }
 .layer-graphic {
+  position: relative;
   display: flex; align-items: center; justify-content: center; gap: 8px;
-  width: 100%; height: 120px; border-radius: 14px; margin-bottom: 18px;
-  background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.22);
+  width: 100%; height: 170px; border-radius: 14px; margin-bottom: 18px; overflow: hidden;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14);
   color: var(--text-2); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
 }
 .layer-graphic svg { opacity: 0.5; }
+.layer-graphic img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); transition: filter 0.4s ease; }
+.layer-graphic--photo::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(155deg, rgba(97,44,173,0.55) 0%, rgba(30,10,60,0.25) 45%, rgba(5,0,37,0.05) 75%);
+  mix-blend-mode: multiply;
+  transition: opacity 0.4s ease;
+}
+.layer-graphic--photo::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgba(5,0,37,0.55) 0%, transparent 55%);
+  transition: opacity 0.4s ease;
+}
+.layer-card--roadmap .layer-graphic--photo::after {
+  background: linear-gradient(155deg, rgba(245,181,51,0.45) 0%, rgba(30,10,60,0.25) 45%, rgba(5,0,37,0.05) 75%);
+}
 .layer-card { display: flex; flex-direction: column; }
-.layer-num { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #a678e0; margin-bottom: 14px; }
-.layer-audience { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); margin-bottom: 6px; }
-.layer-title { font-size: 18px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 10px; }
-.layer-body { font-size: 14.5px; line-height: 1.65; color: var(--text-2); margin-bottom: 14px; }
+.layer-num { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #a678e0; margin-bottom: 14px; transition: color 0.35s ease; }
+.layer-audience { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); margin-bottom: 6px; transition: color 0.35s ease; }
+.layer-title { font-size: 18px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 10px; transition: color 0.35s ease; }
+.layer-body { font-size: 14.5px; line-height: 1.65; color: var(--text-2); margin-bottom: 14px; transition: color 0.35s ease; }
 .layer-example {
   font-size: 13.5px; line-height: 1.6; color: var(--text-2);
   border-left: 2px solid #a678e0; padding: 2px 0 2px 12px; margin-top: auto;
+  transition: color 0.35s ease;
 }
 .layer-example + .layer-example { margin-top: 10px; }
-.layer-example b { color: var(--text-1); }
+.layer-example b { color: var(--text-1); transition: color 0.35s ease; }
 .layer-card--roadmap { border-style: dashed; }
 .layer-card--roadmap .layer-num { color: var(--cg-accent); }
 .layer-card--roadmap .layer-example { border-left-color: var(--cg-accent); }
@@ -874,9 +895,19 @@ svg.pipe { width: 100%; height: auto; display: block; }
   box-shadow: 0 18px 40px rgba(97,44,173,0.32), 0 0 26px rgba(245,181,51,0.28);
 }
 .layer-card:hover {
+  background: rgba(255,255,255,0.7);
   border-color: rgba(166,120,224,0.55);
   box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(166,120,224,0.32);
 }
+.layer-card:hover .layer-num,
+.layer-card:hover .layer-title,
+.layer-card:hover .layer-example b { color: var(--cg-secondary); }
+.layer-card:hover .layer-audience,
+.layer-card:hover .layer-body,
+.layer-card:hover .layer-example { color: rgba(5,0,37,0.72); }
+.layer-card:hover .layer-graphic img { filter: none; }
+.layer-card:hover .layer-graphic--photo::after,
+.layer-card:hover .layer-graphic--photo::before { opacity: 0; }
 .cap-panel--light .cap-card:hover {
   border-color: rgba(245,181,51,0.55);
   box-shadow: 0 18px 40px rgba(5,0,37,0.28), 0 0 26px rgba(245,181,51,0.28);
@@ -1083,6 +1114,10 @@ svg.pipe { width: 100%; height: auto; display: block; }
   <section class="cap-section" id="capabilities" aria-label="Capabilities">
     <div class="cap-panel">
 
+      <canvas class="cap-particles" id="capParticles" aria-hidden="true"></canvas>
+
+      <div class="cap-content">
+
       <div class="cap-header">
         <span class="cap-badge js-reveal" data-reveal-delay="0">Capabilities</span>
         <h2 class="cap-heading js-reveal" data-reveal-delay="100">The tech raises the alert. We make it matter.</h2>
@@ -1092,7 +1127,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
       <!-- Four Layers of Value -->
       <div class="layer-grid">
         <div class="layer-card cap-card" data-cap-delay="0">
-          <div class="layer-graphic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Graphic placeholder</div>
+          <div class="layer-graphic layer-graphic--photo" aria-hidden="true"><img src="images/staff-alert-phone-v2.jpg" alt="Nurse holding a phone showing a CareGen repositioning alert"></div>
           <span class="layer-num">01</span>
           <span class="layer-audience">For Staff</span>
           <h3 class="layer-title">Operational value</h3>
@@ -1101,7 +1136,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
         </div>
 
         <div class="layer-card cap-card" data-cap-delay="100">
-          <div class="layer-graphic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Graphic placeholder</div>
+          <div class="layer-graphic layer-graphic--photo" aria-hidden="true"><img src="images/manager-report-laptop.jpg" alt="Manager reviewing a CareGen report on a laptop"></div>
           <span class="layer-num">02</span>
           <span class="layer-audience">For Managers</span>
           <h3 class="layer-title">Management value</h3>
@@ -1110,7 +1145,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
         </div>
 
         <div class="layer-card cap-card layer-card--roadmap" data-cap-delay="200">
-          <div class="layer-graphic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Graphic placeholder</div>
+          <div class="layer-graphic layer-graphic--photo" aria-hidden="true"><img src="images/compliance-report-audit.jpg" alt="CareGen Intelligence report showing proactive audit readiness analysis"></div>
           <span class="layer-roadmap-tag">Roadmap · Future Capability</span>
           <span class="layer-num">03</span>
           <span class="layer-audience">For The Home</span>
@@ -1120,7 +1155,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
         </div>
 
         <div class="layer-card cap-card" data-cap-delay="300">
-          <div class="layer-graphic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Graphic placeholder</div>
+          <div class="layer-graphic layer-graphic--photo" aria-hidden="true"><img src="images/resident-sensor-bed.jpg" alt="Bed and floor sensors glowing purple and amber, monitoring a resident's movement"></div>
           <span class="layer-num">04</span>
           <span class="layer-audience">For The Resident</span>
           <h3 class="layer-title">Resident value</h3>
@@ -1188,6 +1223,8 @@ svg.pipe { width: 100%; height: auto; display: block; }
           </span>
         </a>
       </div>
+
+      </div><!-- /cap-content -->
 
     </div><!-- /cap-panel -->
   </section>
@@ -1386,6 +1423,87 @@ svg.pipe { width: 100%; height: auto; display: block; }
     requestAnimationFrame(render);
   }, { passive: true });
   render();
+})();
+</script>
+
+<!-- Capabilities section: loose wave dots background (lightweight) -->
+<script>
+(function () {
+  var canvas = document.getElementById('capParticles');
+  var host = canvas && canvas.closest('.cap-panel');
+  if (!canvas || !host) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var ctx = canvas.getContext('2d');
+  var scale = 1, w = 0, h = 0;
+  var dots = [];
+  var t = 0, last = performance.now(), raf;
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function buildDots() {
+    var area = (w * h) / (scale * scale);
+    var count = Math.max(60, Math.min(220, Math.round(area / 4500)));
+    dots = [];
+    for (var i = 0; i < count; i++) {
+      dots.push({
+        x: Math.random() * w,
+        vx: rand(0.06, 0.22) * scale,
+        baseY: rand(0.08, 0.92) * h,
+        amp: rand(10, 34) * scale,
+        freq: rand(0.35, 1.1),
+        phase: rand(0, Math.PI * 2),
+        r: rand(1.1, 2.6) * scale,
+        hue: Math.random() < 0.8 ? 0 : 1 // 0 = purple, 1 = amber
+      });
+    }
+  }
+
+  function resize() {
+    var rect = host.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    scale = Math.min(1.5, window.devicePixelRatio || 1);
+    var nw = Math.max(2, Math.round(rect.width * scale));
+    var nh = Math.max(2, Math.round(rect.height * scale));
+    if (nw === w && nh === h) return;
+    w = nw; h = nh;
+    canvas.width = w; canvas.height = h;
+    buildDots();
+  }
+
+  function draw() {
+    if (!w || !h) return;
+    ctx.clearRect(0, 0, w, h);
+
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      d.x += d.vx;
+      if (d.x > w + 20) d.x = -20;
+
+      var y = d.baseY + Math.sin(t * d.freq + d.phase + d.x * 0.006) * d.amp;
+      var color = d.hue === 0 ? '166,120,224' : '245,181,51';
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(' + color + ',0.75)';
+      ctx.arc(d.x, y, d.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function loop() {
+    raf = requestAnimationFrame(loop);
+    resize();
+    var now = performance.now();
+    var dt = (now - last) / 1000; last = now;
+    if (dt > 0.1) dt = 0.1;
+    t += dt;
+    draw();
+  }
+
+  var ro = new ResizeObserver(function () { resize(); });
+  ro.observe(host);
+
+  resize();
+  loop();
 })();
 </script>
 
