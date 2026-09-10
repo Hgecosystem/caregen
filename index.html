@@ -373,6 +373,11 @@ main { position: relative; z-index: 1; }
   border: 1px solid rgba(245,181,51,0.4); border-radius: 100px; padding: 4px 11px; margin-bottom: 14px;
 }
 @media (max-width: 560px) { .layer-grid { grid-template-columns: 1fr; } }
+.layer-closing-pill {
+  display: inline-block; font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--cg-dominant), var(--cg-mid));
+  border-radius: 100px; padding: 12px 26px; line-height: 1.4;
+}
 
 /* Predict / Detect / Act */
 .pda-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 40px; }
@@ -426,6 +431,7 @@ main { position: relative; z-index: 1; }
   .cap-grid { grid-template-columns: 1fr; }
   .cap-section { margin: 20px 16px 0; }
   .cap-panel { padding: 56px 6% 60px; }
+  .dual-section { margin: 20px 16px 0; }
 }
 
 /* ── Scroll entrance animations ── */
@@ -665,6 +671,124 @@ svg.pipe { width: 100%; height: auto; display: block; }
   .how-hint { display: none; }
 }
 
+/* ═══ THE ALWAYS-ON ENGINE ═══════════════════════════════════════ */
+.engine-section { margin: 56px 2.5vw 0; }
+.engine-intro {
+  text-align: center; max-width: 720px; margin: 0 auto 44px;
+  font-size: clamp(28px, 3.2vw, 42px); font-weight: 800; color: var(--text-1);
+  letter-spacing: -0.025em; line-height: 1.12; text-wrap: balance;
+}
+.engine-flow { display: flex; align-items: flex-start; justify-content: center; gap: 0; max-width: 980px; margin: 0 auto; }
+.engine-node { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 18px; }
+.engine-icon {
+  position: relative; flex: none;
+  width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 35% 30%, var(--cg-dominant), var(--cg-secondary) 78%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.14), 0 14px 30px rgba(5,0,37,0.4);
+  margin-bottom: 18px;
+}
+.engine-node--accent .engine-icon { background: radial-gradient(circle at 35% 30%, var(--cg-accent), #a3641a 78%); }
+.engine-num {
+  position: absolute; top: -6px; right: -6px;
+  font-size: 10.5px; font-weight: 700; color: var(--cg-secondary);
+  background: var(--cg-accent); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+}
+.engine-node--accent .engine-num { background: #fff; }
+.engine-title { font-size: 19px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 8px; }
+.engine-tag {
+  display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--cg-accent); border: 1px solid rgba(245,181,51,0.4); border-radius: 100px; padding: 4px 12px; margin-bottom: 14px;
+}
+.engine-desc { font-size: 14px; line-height: 1.65; color: var(--text-2); max-width: 260px; }
+.engine-connector {
+  flex: 0 0 auto; align-self: flex-start; margin-top: 33px;
+  width: 60px; height: 2px; border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--cg-accent) 0 8px, transparent 8px 16px);
+  background-size: 32px 2px;
+  animation: engine-flow-move 1.4s linear infinite;
+}
+@keyframes engine-flow-move { from { background-position: 0 0; } to { background-position: -32px 0; } }
+@media (max-width: 860px) {
+  .engine-flow { flex-direction: column; align-items: center; }
+  .engine-node { padding: 0; margin-bottom: 8px; }
+  .engine-connector { width: 2px; height: 40px; margin: 0 0 8px; align-self: center;
+    background: repeating-linear-gradient(180deg, var(--cg-accent) 0 8px, transparent 8px 16px);
+    background-size: 2px 32px; animation: engine-flow-move-v 1.4s linear infinite;
+  }
+}
+@keyframes engine-flow-move-v { from { background-position: 0 0; } to { background-position: 0 -32px; } }
+@media (prefers-reduced-motion: reduce) { .engine-connector { animation: none; } }
+
+/* ═══ WHAT YOU ACTUALLY GET / THE SIMPLE STORY (2-column) ═══════ */
+.dual-section { margin: 40px 2.5vw 0; }
+.dual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; }
+@media (max-width: 860px) { .dual-grid { grid-template-columns: 1fr; } }
+
+.stack-panel {
+  background:
+    radial-gradient(55% 45% at 22% 88%, rgba(199,189,255,0.22) 0%, transparent 62%),
+    linear-gradient(160deg, #33176b 0%, #612CAD 55%, #9a5abc 100%);
+  border: 1px solid rgba(199,189,255,0.28);
+  border-radius: var(--radius-card);
+  padding: 56px 7%;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.stack-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-1); background: rgba(245,181,51,0.28);
+  border: 1px solid rgba(245,181,51,0.45); border-radius: 100px; padding: 6px 16px; margin-bottom: 32px;
+}
+.stack-list { display: flex; flex-direction: column; }
+.stack-row { display: flex; gap: 18px; }
+.stack-icon-col { display: flex; flex-direction: column; align-items: center; }
+.stack-icon {
+  flex: none; width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(245,181,51,0.28); border: 1px solid rgba(245,181,51,0.45);
+}
+.stack-line { flex: 1; width: 1px; min-height: 26px; margin: 6px 0; background: rgba(255,255,255,0.16); }
+.stack-text { padding-bottom: 30px; }
+.stack-row:last-child .stack-text { padding-bottom: 0; }
+.stack-label { font-size: 16.5px; font-weight: 700; color: var(--text-1); letter-spacing: -0.01em; margin-bottom: 4px; }
+.stack-desc { font-size: 14.5px; color: var(--text-2); line-height: 1.6; }
+
+.story-panel {
+  background:
+    radial-gradient(55% 45% at 22% 88%, rgba(199,189,255,0.22) 0%, transparent 62%),
+    linear-gradient(160deg, #33176b 0%, #612CAD 55%, #9a5abc 100%);
+  border: 1px solid rgba(199,189,255,0.28);
+  border-radius: var(--radius-card);
+  padding: 56px 7%;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  text-align: center; display: flex; flex-direction: column; justify-content: center;
+}
+.story-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-1); background: rgba(245,181,51,0.28);
+  border: 1px solid rgba(245,181,51,0.45); border-radius: 100px; padding: 6px 16px; margin-bottom: 28px;
+}
+.story-list { list-style: none; padding: 0; margin: 0 0 28px; text-align: left; }
+.story-list li {
+  position: relative; padding-left: 22px; margin-bottom: 14px;
+  font-size: 16px; line-height: 1.6; color: var(--text-2);
+}
+.story-list li:last-child { margin-bottom: 0; }
+.story-list li::before {
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--cg-accent);
+}
+.story-list li b { color: var(--text-1); font-weight: 700; }
+.story-closing {
+  font-size: 18px; font-weight: 600; color: var(--text-1); letter-spacing: -0.01em;
+  line-height: 1.5; text-align: center; max-width: 640px; margin: 32px auto 0;
+}
+@media (max-width: 560px) {
+  .story-panel { padding: 44px 6%; }
+  .story-closing { font-size: 16px; }
+}
+
 /* ═══ FINAL CTA ═══════════════════════════════════════════════════ */
 .cta-wrap { padding: 40px 2.5vw 0; position: relative; z-index: 1; }
 .cta-card {
@@ -895,16 +1019,10 @@ svg.pipe { width: 100%; height: auto; display: block; }
   box-shadow: 0 18px 40px rgba(97,44,173,0.32), 0 0 26px rgba(245,181,51,0.28);
 }
 .layer-card:hover {
-  background: rgba(255,255,255,0.7);
+  background: rgba(34,7,73,0.75);
   border-color: rgba(166,120,224,0.55);
   box-shadow: 0 18px 40px rgba(5,0,37,0.35), 0 0 26px rgba(166,120,224,0.32);
 }
-.layer-card:hover .layer-num,
-.layer-card:hover .layer-title,
-.layer-card:hover .layer-example b { color: var(--cg-secondary); }
-.layer-card:hover .layer-audience,
-.layer-card:hover .layer-body,
-.layer-card:hover .layer-example { color: rgba(5,0,37,0.72); }
 .layer-card:hover .layer-graphic img { filter: none; }
 .layer-card:hover .layer-graphic--photo::after,
 .layer-card:hover .layer-graphic--photo::before { opacity: 0; }
@@ -1165,63 +1283,8 @@ svg.pipe { width: 100%; height: auto; display: block; }
         </div>
       </div>
 
-      <p class="cap-sub" style="text-align:center; max-width:640px; margin:0 auto 40px; font-size:14px;">Underneath all four layers, the same always-on engine is running:</p>
-
-      <!-- Predict / Detect / Act -->
-      <div class="pda-grid">
-        <div class="pda-step cap-card" data-cap-delay="0">
-          <span class="pda-num">01</span>
-          <div class="pda-icon-wrap" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="12" cy="12" r="3.5" stroke="white" stroke-width="1.5" fill="none"/>
-            </svg>
-          </div>
-          <h3 class="pda-title">Predict</h3>
-          <p class="pda-tag">AI + resident data</p>
-          <p class="pda-body">Continuous signal from bed, radar and toilet sensors is cross-checked against each resident's care record, scoring risk around the clock, not just at handover.</p>
-          <span class="pda-arrow" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-
-        <div class="pda-step cap-card" data-cap-delay="100">
-          <span class="pda-num">02</span>
-          <div class="pda-icon-wrap" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4a5 5 0 00-5 5v3.5L5 16h14l-2-3.5V9a5 5 0 00-5-5z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
-              <path d="M9.5 19a2.5 2.5 0 005 0" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            </svg>
-          </div>
-          <h3 class="pda-title">Detect</h3>
-          <p class="pda-tag">Real-time alert</p>
-          <p class="pda-body">When a resident crosses their set risk threshold, in-charge staff are alerted in real time, a warning before the incident, not a report after it.</p>
-          <span class="pda-arrow" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-
-        <div class="pda-step cap-card pda-step--accent" data-cap-delay="200">
-          <span class="pda-num">03</span>
-          <div class="pda-icon-wrap" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2l2.4 1.6.8 2.8 2.8.8L19.6 9.6 20 12l-1.6 2.4-.8 2.8-2.8.8L12.4 21.6 12 22l-2.4-1.6-.8-2.8-2.8-.8L3.6 14.4 3 12l1.6-2.4.8-2.8 2.8-.8L10.4 2.4Z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
-              <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <h3 class="pda-title">Act</h3>
-          <p class="pda-tag">Bedside + HG clinical layer</p>
-          <p class="pda-body">Staff act at the bedside per the care plan. Above it, the HG clinical team owns oversight, escalating trends and delivering Commission-ready evidence.</p>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top: 8px;">
-        <a href="capabilities.html" class="btn btn-secondary">
-          Explore All Five Packages
-          <span class="btn-icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
+      <div style="text-align:center;">
+        <p class="layer-closing-pill js-reveal" data-reveal-delay="0">The technology sits underneath all four, rather than being the story itself.</p>
       </div>
 
       </div><!-- /cap-content -->
@@ -1229,7 +1292,192 @@ svg.pipe { width: 100%; height: auto; display: block; }
     </div><!-- /cap-panel -->
   </section>
 
-  
+
+<!-- ═══ THE ALWAYS-ON ENGINE ═══════════════════════════════════════ -->
+  <section class="engine-section" aria-label="The Always-On Engine">
+    <div style="text-align:center;">
+      <span class="cap-badge js-reveal" data-reveal-delay="0">The Engine Room</span>
+    </div>
+    <p class="engine-intro js-reveal" data-reveal-delay="60">Underneath all four layers, the same always-on engine is running:</p>
+
+    <div class="engine-flow">
+      <div class="engine-node js-reveal" data-reveal-delay="100">
+        <div class="engine-icon" aria-hidden="true">
+          <span class="engine-num">01</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="3.5" stroke="white" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3 class="engine-title">Predict</h3>
+        <span class="engine-tag">AI + resident data</span>
+        <p class="engine-desc">Continuous signal from bed, radar and toilet sensors is cross-checked against each resident's care record, scoring risk around the clock, not just at handover.</p>
+      </div>
+
+      <div class="engine-connector" aria-hidden="true"></div>
+
+      <div class="engine-node js-reveal" data-reveal-delay="200">
+        <div class="engine-icon" aria-hidden="true">
+          <span class="engine-num">02</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4a5 5 0 00-5 5v3.5L5 16h14l-2-3.5V9a5 5 0 00-5-5z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <path d="M9.5 19a2.5 2.5 0 005 0" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 class="engine-title">Detect</h3>
+        <span class="engine-tag">Real-time alert</span>
+        <p class="engine-desc">When a resident crosses their set risk threshold, in-charge staff are alerted in real time, a warning before the incident, not a report after it.</p>
+      </div>
+
+      <div class="engine-connector" aria-hidden="true"></div>
+
+      <div class="engine-node engine-node--accent js-reveal" data-reveal-delay="300">
+        <div class="engine-icon" aria-hidden="true">
+          <span class="engine-num">03</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l2.4 1.6.8 2.8 2.8.8L19.6 9.6 20 12l-1.6 2.4-.8 2.8-2.8.8L12.4 21.6 12 22l-2.4-1.6-.8-2.8-2.8-.8L3.6 14.4 3 12l1.6-2.4.8-2.8 2.8-.8L10.4 2.4Z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 class="engine-title">Act</h3>
+        <span class="engine-tag">Bedside + HG clinical layer</span>
+        <p class="engine-desc">Staff act at the bedside per the care plan. Above it, the HG clinical team owns oversight, escalating trends and delivering Commission-ready evidence.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 36px;" class="js-reveal" data-reveal-delay="400">
+      <a href="capabilities.html" class="btn btn-secondary">
+        Explore All Five Packages
+        <span class="btn-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </section>
+
+
+<!-- ═══ WHAT YOU ACTUALLY GET / THE SIMPLE STORY ══════════════════ -->
+  <section class="dual-section" aria-label="What You Actually Get and The Simple Story">
+  <div class="dual-grid">
+
+    <div class="stack-panel">
+      <span class="stack-badge js-reveal" data-reveal-delay="0">What You Actually Get</span>
+
+      <div class="stack-list">
+        <div class="stack-row js-reveal" data-reveal-delay="100">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 19v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 19h18M5 11V7a2 2 0 0 1 2-2h3v6M14 11V5h3a2 2 0 0 1 2 2v4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="stack-line"></span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">In the resident's room</p>
+            <p class="stack-desc">Sensors and smart technology.</p>
+          </div>
+        </div>
+
+        <div class="stack-row js-reveal" data-reveal-delay="180">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="4.5" rx="1.5" stroke="white" stroke-width="1.5"/><rect x="4" y="10.5" width="16" height="4.5" rx="1.5" stroke="white" stroke-width="1.5"/><rect x="4" y="17" width="16" height="4.5" rx="1.5" stroke="white" stroke-width="1.5"/></svg>
+            </span>
+            <span class="stack-line"></span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">Running underneath</p>
+            <p class="stack-desc">Talius platform + Gillie AI.</p>
+          </div>
+        </div>
+
+        <div class="stack-row js-reveal" data-reveal-delay="260">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="white" stroke-width="1.5"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M15.5 5.5a3.2 3.2 0 0 1 0 5.6" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+            <span class="stack-line"></span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">Behind it</p>
+            <p class="stack-desc">HG clinical expertise and support.</p>
+          </div>
+        </div>
+
+        <div class="stack-row js-reveal" data-reveal-delay="340">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19V11M10 19V5M16 19v-9M20 19H4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="8" r="1.4" fill="white"/><circle cx="10" cy="4" r="1.4" fill="white"/><circle cx="16" cy="8" r="1.4" fill="white"/></svg>
+            </span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">For leadership</p>
+            <p class="stack-desc">Intelligence, trends, reporting and governance visibility.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-panel">
+      <p class="story-eyebrow js-reveal" data-reveal-delay="0">The Simple Story</p>
+
+      <div class="stack-list" style="text-align:left;">
+        <div class="stack-row js-reveal" data-reveal-delay="100">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="white" stroke-width="1.5"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <span class="stack-line"></span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">For the staff member</p>
+            <p class="stack-desc">Better information at the point of care.</p>
+          </div>
+        </div>
+
+        <div class="stack-row js-reveal" data-reveal-delay="180">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>
+            </span>
+            <span class="stack-line"></span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">For the manager</p>
+            <p class="stack-desc">Better visibility and less manual reporting.</p>
+          </div>
+        </div>
+
+        <div class="stack-row js-reveal" data-reveal-delay="260">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 7.8-7 9-3.5-1.2-7-4-7-9V6l7-3Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="stack-line"></span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">For the provider</p>
+            <p class="stack-desc">Stronger evidence and assurance.</p>
+          </div>
+        </div>
+
+        <div class="stack-row js-reveal" data-reveal-delay="340">
+          <div class="stack-icon-col">
+            <span class="stack-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.35-9.5-8.5C1 8.5 2.5 5 6 5c2 0 3.5 1.2 4 2.4C10.5 6.2 12 5 14 5c3.5 0 5 3.5 3.5 6.5C19 15.65 12 20 12 20Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <div class="stack-text">
+            <p class="stack-label">For the resident</p>
+            <p class="stack-desc">Better, less intrusive and more proactive care.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /dual-grid -->
+  </section>
+
+
 <!-- ═══ FINAL CTA ═══════════════════════════════════════════════════ -->
   <section class="cta-wrap" id="contact" aria-label="Call to action">
     <div class="cta-card">
