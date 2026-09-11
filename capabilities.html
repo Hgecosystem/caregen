@@ -782,6 +782,20 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .tier-list li { font-size: 13px; color: var(--text-2); padding-left: 14px; position: relative; }
 .tier-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--cg-accent); }
 .tier-note { text-align: center; font-size: 13.5px; color: var(--text-3); max-width: 640px; margin: 0 auto; line-height: 1.7; }
+.funding-companion {
+  display: flex; align-items: center; gap: 16px; text-align: left;
+  background: linear-gradient(135deg, rgba(245,181,51,0.16), rgba(97,44,173,0.22));
+  border: 1px solid rgba(245,181,51,0.4); border-radius: var(--radius-card);
+  padding: 20px 26px; max-width: 780px; margin: 0 auto 40px;
+}
+.funding-companion-icon {
+  flex: none; width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--cg-accent), #c98f2a);
+}
+.funding-companion-text { font-size: 14px; line-height: 1.6; color: var(--text-1); }
+.funding-companion-text b { color: var(--cg-accent); }
+@media (max-width: 560px) { .funding-companion { flex-direction: column; text-align: center; } }
 @media (max-width: 900px) { .tier-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .tier-section { margin: 20px 16px 0; } .tier-panel { padding: 48px 6% 52px; } }
 
@@ -975,7 +989,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
       <li><a href="how-it-works.html">How It Works</a></li>
       <li><a href="trust.html">Compliance</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
+    <a href="how-it-works.html" class="nav-cta">See CareGen in Action</a>
     <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
       <span></span>
     </button>
@@ -986,7 +1000,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
   <a href="capabilities.html" class="is-current">Capabilities</a>
   <a href="how-it-works.html">How It Works</a>
   <a href="trust.html">Compliance</a>
-  <a href="contact.html" class="nav-drawer-cta">Book a Discovery Call</a>
+  <a href="how-it-works.html" class="nav-drawer-cta">See CareGen in Action</a>
 </div>
 
 <main>
@@ -1000,7 +1014,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
       <div class="cap-header">
         <span class="cap-badge js-reveal" data-reveal-delay="0">Capabilities</span>
         <h2 class="cap-heading js-reveal" data-reveal-delay="100">CareGen Intelligence. Getting ahead of the risk.</h2>
-        <p class="cap-sub js-reveal" data-reveal-delay="200">One engine, three steps: sensing that never stops, an HG clinical team that never misses a signal.</p>
+        <p class="cap-sub js-reveal" data-reveal-delay="200">One engine, three steps: continuous sensing that recognises changing patterns early, and an HG clinical team focused on catching what matters.</p>
       </div>
 
       <!-- Predict / Detect / Act -->
@@ -1091,7 +1105,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
           </div>
           <p class="cap-card-tag">CFP</p>
           <h3 class="cap-card-heading">Falls Prevention</h3>
-          <p class="cap-card-body">Stop falls before they happen. Bed-exit, toileting and nocturnal alerts let staff intervene at the point of risk.</p>
+          <p class="cap-card-body">Spot rising fall risk earlier. Bed-exit, toileting and nocturnal alerts create the opportunity for staff to intervene before it becomes an incident.</p>
         </div>
 
         <div class="cap-card pkg-stroke-3" data-cap-delay="200">
@@ -1102,7 +1116,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
           </div>
           <p class="cap-card-tag">CS</p>
           <h3 class="cap-card-heading">Skin</h3>
-          <p class="cap-card-body">Prevent pressure injuries. Bed-sensor immobility monitoring and repositioning compliance, with sleep-quality insight.</p>
+          <p class="cap-card-body">Recognise pressure-injury risk earlier. Bed-sensor immobility monitoring and repositioning compliance, with sleep-quality insight.</p>
         </div>
 
         <div class="cap-card pkg-stroke-4" data-cap-delay="300">
@@ -1115,7 +1129,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
           </div>
           <p class="cap-card-tag">CB</p>
           <h3 class="cap-card-heading">Behaviour</h3>
-          <p class="cap-card-body">Keep wandering residents safe. Door detection and real-time location, with restrictive-practice documentation.</p>
+          <p class="cap-card-body">Help keep wandering residents safer. Door detection and real-time location, with restrictive-practice documentation.</p>
         </div>
 
         <div class="cap-card pkg-stroke-5" data-cap-delay="400">
@@ -1143,6 +1157,16 @@ svg.pipe { width: 100%; height: auto; display: block; }
         <span class="cap-badge js-reveal" data-reveal-delay="0">Service Tiers</span>
         <h2 class="cap-heading js-reveal" data-reveal-delay="100">Three tiers, the same five packages. You choose how much HG carries.</h2>
         <p class="cap-sub js-reveal" data-reveal-delay="200">Every package launches at Essential. Support and Managed layer on more of the HG clinical service as our care-system integration comes online.</p>
+      </div>
+
+      <div class="funding-companion js-reveal" data-reveal-delay="250">
+        <div class="funding-companion-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.5"/>
+            <path d="M12 7v10M9.5 9.3c0-1.1 1.1-1.8 2.5-1.8s2.5.8 2.5 1.9c0 2.6-5 1.2-5 3.8 0 1.1 1.1 1.9 2.5 1.9s2.5-.7 2.5-1.8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="funding-companion-text"><b>Funding Companion —</b> an AN-ACC funding review is included on every tier, connecting better care intelligence directly to the economics of delivering that care.</p>
       </div>
 
       <div class="tier-grid">
