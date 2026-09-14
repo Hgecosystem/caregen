@@ -687,7 +687,7 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .engine-icon {
   position: relative; flex: none;
   width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(circle at 35% 30%, var(--cg-dominant), var(--cg-secondary) 78%);
+  background: radial-gradient(circle at 35% 30%, #9a5abc, var(--cg-dominant) 78%);
   box-shadow: 0 0 0 1px rgba(255,255,255,0.14), 0 14px 30px rgba(5,0,37,0.4);
   margin-bottom: 18px;
 }
@@ -701,8 +701,9 @@ svg.pipe { width: 100%; height: auto; display: block; }
 .engine-title { font-size: 19px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 8px; }
 .engine-tag {
   display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--cg-accent); border: 1px solid rgba(245,181,51,0.4); border-radius: 100px; padding: 4px 12px; margin-bottom: 14px;
+  color: #9a5abc; border: 1px solid rgba(154,90,188,0.4); border-radius: 100px; padding: 4px 12px; margin-bottom: 14px;
 }
+.engine-node--accent .engine-tag { color: var(--cg-accent); border-color: rgba(245,181,51,0.4); }
 .engine-desc { font-size: 14px; line-height: 1.65; color: var(--text-2); max-width: 260px; }
 .engine-connector {
   flex: 0 0 auto; align-self: flex-start; margin-top: 33px;
